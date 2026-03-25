@@ -1,588 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZIVO | Connect & Earn - 4D Social Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #c994ff; /* ZIVO Purple */
-            --secondary: #00ffcc; /* Mint Accent */
-            --bg-dark: #000000; /* Pure black */
-            --bg-interface: #111111; /* Interface black */
-            --card-bg: rgba(255, 255, 255, 0.03); /* Translucent interface */
-            --glass-border: rgba(255, 255, 255, 0.08); /* Interface line */
-            --text-main: #ffffff;
-            --text-sub: rgba(255, 255, 255, 0.6);
-            --interface-icon-green: #2ecc71; /* Green checkmark, active status */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect | Start Dating Today</title>
+<style>
+/* Reset */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  max-width: 100%;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: #555;
+}
+.highlight {
+  color: #c0392b;
+}
 
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            perspective: 1px; /* Required for parallax-like paper effects */
-        }
+/* Header */
+header {
+  background-color: #f4f4f4;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo h1 {
+  font-size: 1.5rem;
+}
+.nav ul {
+  display: flex;
+}
+.nav li {
+  margin-left: 20px;
+}
+.nav a {
+  font-weight: bold;
+}
 
-        /* --- GLOBAL ANIMATIONS --- */
-        @keyframes floatInterface {
-            0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
-            50% { transform: translateY(-10px) rotateX(2deg) rotateY(1deg); }
-            100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
-        }
+/* Hero */
+.hero {
+  background-color: #e0f2f1;
+  padding: 100px 0;
+}
+.hero-content {
+  text-align: center;
+}
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #666;
+}
+.hero-img-placeholder {
+  width: 400px;
+  height: 400px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        @keyframes paperSlide {
-            0% { transform: perspective(800px) rotateY(-5deg) translateZ(-50px); opacity: 0.8; }
-            100% { transform: perspective(800px) rotateY(0deg) translateZ(0px); opacity: 1; }
-        }
+/* Features */
+.features {
+  padding: 80px 0;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.feature-item {
+  text-align: center;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+.feature-item h3 {
+  margin: 20px 0;
+}
+.feature-item .icon-placeholder {
+  font-size: 3rem;
+  color: #c0392b;
+}
 
-        /* --- HERO SECTION - 4D & PAPER STYLE --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 0 40px;
-            overflow: hidden;
-        }
+/* Profiles */
+.profiles {
+  background-color: #f4f4f4;
+  padding: 80px 0;
+}
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.profile-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.profile-card .avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 auto 10px;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(201, 148, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        /* The '4D Paper' Container */
-        .hero-split-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1300px;
-            width: 100%;
-            transform-style: preserve-3d;
-            animation: paperSlide 1.2s ease-out;
-        }
-
-        /* Left Side Text */
-        .hero-text {
-            transform: translateZ(30px);
-        }
-
-        .hero-text h1 {
-            font-size: clamp(60px, 8vw, 120px);
-            margin: 0;
-            background: linear-gradient(135deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -3px;
-            font-weight: 800;
-        }
-
-        .hero-text p {
-            font-size: 22px;
-            color: var(--text-sub);
-            margin-bottom: 50px;
-            max-width: 550px;
-            line-height: 1.6;
-        }
-
-        /* Right Side - 4D Interface Scene */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform: translateZ(10px) rotateY(-5deg); /* Slight paper angle */
-        }
-
-        /* Stylized male profile card - ZIVO style */
-        .interface-card-4d {
-            width: 320px;
-            height: 520px;
-            background-color: var(--bg-interface);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 20px 40px 80px rgba(0,0,0,0.8);
-            transform-style: preserve-3d;
-            animation: floatInterface 12s ease-in-out infinite;
-        }
-
-        /* Best 4D Animation Style Avatar - Male - ZIVO style */
-        .profile-img-container {
-            height: 60%;
-            position: relative;
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Placeholder for high-end 4D style render of a stylized, professional-yet-approachable man */
-            background-image: url('https://via.placeholder.com/320x312/1a1a1a/c994ff?text=4D+Male+Avatar+ZIVO+Style');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Status indicator from one side - Top right of the visual area */
-        .online-status {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 14px;
-            height: 14px;
-            background-color: var(--interface-icon-green);
-            border-radius: 50%;
-            border: 2px solid var(--bg-interface);
-            box-shadow: 0 0 10px var(--interface-icon-green);
-        }
-
-        .profile-details {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .profile-name {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        /* Stylized checkmark */
-        .check-verified {
-            color: var(--interface-icon-green);
-            font-size: 16px;
-        }
-
-        .profile-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .badge-tag {
-            background-color: rgba(201, 148, 255, 0.1);
-            color: var(--primary);
-            font-size: 11px;
-            padding: 5px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(201, 148, 255, 0.2);
-        }
-
-        .call-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .call-btn {
-            flex: 1;
-            background-color: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            padding: 12px;
-            border-radius: 16px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .call-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* Secondary interaction button - Random/Quick Connect - ZIVO style */
-        .random-btn {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(40px); /* 4D depth */
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            padding: 14px 28px;
-            border-radius: 50px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- THE GLOW DOWNLOAD BUTTON --- */
-        .btn-glow {
-            position: relative;
-            padding: 18px 45px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #000;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .btn-glow:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 35px rgba(0, 255, 204, 0.7);
-        }
-
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -150%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.3);
-            transform: rotate(45deg);
-            transition: 0.6s;
-        }
-
-        .btn-glow:hover::after {
-            left: 150%;
-        }
-
-        /* --- SCREENSHOT SCROLLER - Horizontal & Translucent --- */
-        .screenshots-container {
-            padding: 100px 0;
-            background: linear-gradient(to bottom, #000, #0a0a0a);
-        }
-
-        .scroll-wrapper {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 25px;
-            padding: 30px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-        }
-
-        .scroll-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
-
-        .screenshot-card {
-            flex: 0 0 300px;
-            height: 550px;
-            background-color: var(--bg-interface);
-            border-radius: 30px;
-            scroll-snap-align: center;
-            border: 1px solid var(--glass-border);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-            position: relative;
-            transition: transform 0.4s ease, border-color 0.4s ease;
-        }
-        
-        .screenshot-card:hover {
-            transform: scale(1.03);
-            border-color: rgba(201, 148, 255, 0.4);
-        }
-
-        .screenshot-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Placeholder for 4D animation style female avatars in-app screens */
-            background-image: url('https://via.placeholder.com/300x550/0a0a0a/c994ff?text=ZIVO+App+Screen+w/4D+Female+Avatar');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Stylized indicator on screenshots to show real attraction/trust */
-        .screenshot-card::after {
-            content: '✓ Real Profile';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(46, 204, 113, 0.15);
-            color: var(--interface-icon-green);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            border: 1px solid rgba(46, 204, 113, 0.3);
-        }
-
-        /* --- SECTIONS COMMON --- */
-        .section-title {
-            text-align: center;
-            font-size: clamp(32px, 5vw, 48px);
-            margin-bottom: 70px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-        }
-
-        /* --- FEATURES GRID - PAPER SLIDE EFFECTS --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(201, 148, 255, 0.3);
-            background: rgba(201, 148, 255, 0.03);
-            transform: translateY(-5px);
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .feature-icon-stylized {
-            color: var(--primary);
-            font-size: 28px;
-        }
-
-        .feature-card p {
-            color: var(--text-sub);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        /* --- TRUST HUB --- */
-        .security-hub {
-            padding: 120px 30px;
-            text-align: center;
-            background: linear-gradient(transparent, rgba(201, 148, 255, 0.02));
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 60px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .badge {
-            flex: 1 1 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 16px;
-            color: var(--text-sub);
-            padding: 20px;
-        }
-
-        .badge-icon-stylized {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 80px 40px;
-            border-top: 1px solid var(--glass-border);
-            background-color: #000;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--text-sub);
-            font-size: 14px;
-            margin: 8px 0;
-        }
-
-        .footer-logo {
-            font-weight: 800;
-            font-size: 28px;
-            background: linear-gradient(135deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        .footer-links {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        footer a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: var(--primary);
-        }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 900px) {
-            .hero-split-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-            .hero-text { display: flex; flex-direction: column; align-items: center; }
-            .hero-text p { max-width: 100%; }
-            .hero-visual { transform: none; margin-top: 30px; }
-            .interface-card-4d { width: 280px; height: 480px; }
-        }
-    </style>
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+</style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-split-container">
-            <div class="hero-text">
-                <h1>ZIVO</h1>
-                <p>The next generation of social connection. Engage in premium 4D experiences while earning instant rewards through genuine interactions.</p>
-                <a href="https://www.zivoapp.in/app.apk" class="btn-glow">Explore Now</a>
-            </div>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><span class="highlight">C</span>onnect</h1>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Download</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn">Get Started</a>
+    </div>
+  </header>
 
-            <div class="hero-visual">
-                <div class="interface-card-4d">
-                    <div class="profile-img-container">
-                        <div class="profile-img"></div>
-                        <div class="online-status"></div> </div>
-                    <div class="profile-details">
-                        <p class="profile-name">Rahul Sharma <span class="check-verified">✓</span></p>
-                        <div class="profile-badges">
-                            <span class="badge-tag">Gaming</span>
-                            <span class="badge-tag">Productivity</span>
-                            <span class="badge-tag">Fitness</span>
-                        </div>
-                        <div class="call-buttons">
-                            <div class="call-btn">📞 2/min</div>
-                            <div class="call-btn">📹 10/min</div>
-                        </div>
-                    </div>
-                </div>
-                <button class="random-btn">⚡ Quick Connect</button>
-            </div>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Find Your Perfect Match</h2>
+        <p>Discover genuine connections in a trusted community. Meet someone special today.</p>
+        <div class="hero-img-placeholder">
+          <p>Main Image Placeholder</p>
         </div>
-    </section>
+        <a href="#" class="btn" style="margin-top: 20px">Join Now</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="screenshots-container">
-        <h2 class="section-title">Discover the Zivo World</h2>
-        <div class="scroll-wrapper">
-            <div class="screenshot-card"><img src="https://via.placeholder.com/300x550/0a0a0a/c994ff?text=ZIVO+4D+Female+Avatar+Profile" alt="Discovery Screen"></div>
-            <div class="screenshot-card"><img src="https://via.placeholder.com/300x550/0a0a0a/c994ff?text=Live+Interaction+Interface" alt="Live Stream Screen"></div>
-            <div class="screenshot-card"><img src="https://via.placeholder.com/300x550/0a0a0a/c994ff?text=Instant+Connect+Screen" alt="Connect Screen"></div>
-            <div class="screenshot-card"><img src="https://via.placeholder.com/300x550/0a0a0a/c994ff?text=Wallet+%26+Rewards+Interface" alt="Earnings Screen"></div>
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="icon-placeholder">❤</span>
+          <h3>Verified Profiles</h3>
+          <p>Connect with confidence. Our community uses active verification to help you find real people.</p>
         </div>
-    </section>
-
-    <section style="padding: 120px 0; background-color: #000;">
-        <h2 class="section-title">A Secure, Premium Social Economy</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3><span class="feature-icon-stylized">✨</span>4D Style Visuals</h3>
-                <p>Immerse yourself in a high-fidelity social experience with stunning 4D animation style avatars.</p>
-            </div>
-            <div class="feature-card">
-                <h3><span class="feature-icon-stylized">⚡</span>Instant Earnings</h3>
-                <p>Every genuine interaction earns rewards. Recieve and redeem coins instantly and securely.</p>
-            </div>
-            <div class="feature-card">
-                <h3><span class="feature-icon-stylized">🛡️</span>Verified Profiles</h3>
-                <p>We ensure a trusted environment. Every profile is verified to maintain authentic attractions and connections.</p>
-            </div>
+        <div class="feature-item">
+          <span class="icon-placeholder">📍</span>
+          <h3>Local Connections</h3>
+          <p>Discover compatible singles right in your area. Find potential matches near you.</p>
         </div>
-    </section>
-
-    <section class="security-hub">
-        <h2 class="section-title">Safe, Secure, & Authenticated</h2>
-        <p style="max-width: 750px; margin: 0 auto; color: var(--text-sub); font-size: 18px; line-height: 1.7;">
-            Your privacy and security are paramount. ZIVO employs end-to-end encryption and a strict verification process for a trusted social landscape.
-        </p>
-        
-        <div class="trust-badges">
-            <div class="badge">
-                <div class="badge-icon-stylized">🔒</div>
-                <span>Encrypted Interaction</span>
-            </div>
-            <div class="badge">
-                <div class="badge-icon-stylized">💳</div>
-                <span>Secure Payments</span>
-            </div>
-            <div class="badge">
-                <div class="badge-icon-stylized">👤</div>
-                <span>Identity Verification</span>
-            </div>
+        <div class="feature-item">
+          <span class="icon-placeholder">💬</span>
+          <h3>Spark Conversation</h3>
+          <p>Our intuitive chat and icebreakers make it easy to make meaningful introductions.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section style="padding: 120px 30px; text-align: center; background-color: #000;">
-        <h2 style="font-size: 36px; margin-bottom: 40px;">Begin Your Zivo Journey</h2>
-        <a href="https://www.zivoapp.in/app.apk" class="btn-glow">Get Zivo Now</a>
-    </section>
-
-    <footer>
-        <span class="footer-logo">ZIVO</span>
-        <p>The premium 4D style social attraction app.</p>
-        <p>© 2026 ZivoApp Inc. All rights reserved.</p>
-        <p>Support: <a href="mailto:support@zivoapp.in">support@zivoapp.in</a></p>
-        <div class="footer-links">
-            <a href="https://www.zivoapp.in/privacy">Privacy Policy</a>
-            <a href="https://www.zivoapp.in/terms">Terms of Service</a>
-            <a href="https://www.zivoapp.in/help">Help Center</a>
+  <section class="profiles">
+    <div class="container">
+      <h3>Newest Members</h3>
+      <p>A few people from the community...</p>
+      <br>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <div class="avatar-placeholder"></div>
+          <p><strong>Alex P.</strong>, 28</p>
+          <p>San Francisco, CA</p>
         </div>
-    </footer>
+        <div class="profile-card">
+          <div class="avatar-placeholder"></div>
+          <p><strong>Jamie L.</strong>, 31</p>
+          <p>Chicago, IL</p>
+        </div>
+        <div class="profile-card">
+          <div class="avatar-placeholder"></div>
+          <p><strong>Morgan K.</strong>, 25</p>
+          <p>Austin, TX</p>
+        </div>
+        <div class="profile-card">
+          <div class="avatar-placeholder"></div>
+          <p><strong>Taylor S.</strong>, 29</p>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Connect App. All rights reserved.</p>
+      <a href="#" style="color: #ccc; margin-right: 15px">Privacy Policy</a>
+      <a href="#" style="color: #ccc">Terms of Service</a>
+    </div>
+  </footer>
 
 </body>
 </html>
