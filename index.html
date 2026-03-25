@@ -1,246 +1,683 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connect | Start Dating Today</title>
-<style>
-/* Reset */
-body, h1, h2, h3, p, ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-body {
-  font-family: Arial, sans-serif;
-  color: #333;
-  line-height: 1.6;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-img {
-  max-width: 100%;
-}
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  transition: background-color 0.3s;
-}
-.btn:hover {
-  background-color: #555;
-}
-.highlight {
-  color: #c0392b;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIVO | Find Your Real Connection, Earn Real Rewards - 2026 Social-Dating Revolution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c994ff; /* Zivo Purple */
+            --secondary: #00ffcc; /* Mint Accent */
+            --bg-dark: #000000; /* Pure black */
+            --bg-interface: #111111; /* Interface black */
+            --card-bg: rgba(255, 255, 255, 0.03); /* Translucent interface */
+            --glass-border: rgba(255, 255, 255, 0.08); /* Interface line */
+            --text-main: #ffffff;
+            --text-sub: rgba(255, 255, 255, 0.6);
+            --interface-icon-green: #2ecc71; /* Verified status */
+            --safe-gold: #f1c40f; /* Secure payment highlight */
+            --pci-pci-badge: #e74c3c; /* PCI-DSS Compliant */
+        }
 
-/* Header */
-header {
-  background-color: #f4f4f4;
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
-}
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo h1 {
-  font-size: 1.5rem;
-}
-.nav ul {
-  display: flex;
-}
-.nav li {
-  margin-left: 20px;
-}
-.nav a {
-  font-weight: bold;
-}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            perspective: 2px; /* Smooth paper parallax effect */
+            scroll-behavior: smooth; /* Smoother scrolling experience */
+        }
 
-/* Hero */
-.hero {
-  background-color: #e0f2f1;
-  padding: 100px 0;
-}
-.hero-content {
-  text-align: center;
-}
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #666;
-}
-.hero-img-placeholder {
-  width: 400px;
-  height: 400px;
-  background-color: #ccc;
-  border-radius: 50%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+        /* --- Global Paper/4D Styles --- */
+        [data-paper-element] {
+            transform-style: preserve-3d;
+            animation: paper-load-slide 1.2s ease-out;
+        }
 
-/* Features */
-.features {
-  padding: 80px 0;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-.feature-item {
-  text-align: center;
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-.feature-item h3 {
-  margin: 20px 0;
-}
-.feature-item .icon-placeholder {
-  font-size: 3rem;
-  color: #c0392b;
-}
+        [data-paper-element]:hover {
+            transform: translateY(-5px) scale(1.02) !important;
+        }
 
-/* Profiles */
-.profiles {
-  background-color: #f4f4f4;
-  padding: 80px 0;
-}
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-.profile-card {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-}
-.profile-card .avatar-placeholder {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 auto 10px;
-}
+        @keyframes paper-load-slide {
+            0% { transform: perspective(800px) rotateY(-5deg) translateZ(-50px); opacity: 0; }
+            100% { transform: perspective(800px) rotateY(0deg) translateZ(0px); opacity: 1; }
+        }
 
-/* Footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 30px 0;
-  text-align: center;
-}
-</style>
+        /* --- HEADER (Translucent, Glassmorphic) --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 28px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .header-download-btn {
+            background-color: transparent;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .header-download-btn:hover {
+            background-color: var(--primary);
+            color: #000;
+        }
+
+        /* --- HERO SECTION - Zivo World --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0 40px;
+            overflow: hidden;
+            margin-top: 80px; /* Offset for fixed header */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(201, 148, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Center Content (Text + Visual) */
+        .hero-split-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1300px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Headline & Subheadline */
+        .hero-text h1 {
+            font-size: clamp(60px, 7vw, 100px);
+            margin: 0;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -3px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            color: var(--text-sub);
+            margin-bottom: 50px;
+            max-width: 750px;
+            line-height: 1.6;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Buttons (Download) */
+        .download-ctas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .btn-download-app {
+            position: relative;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-download-app:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 35px rgba(0, 255, 204, 0.7);
+        }
+
+        .btn-download-app::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.3);
+            transform: rotate(45deg);
+            transition: 0.6s;
+        }
+
+        .btn-download-app:hover::after {
+            left: 150%;
+        }
+
+        .btn-secondary-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+        
+        .btn-secondary-link:hover {
+            opacity: 0.8;
+        }
+
+        /* LARGE CENTRAL 4D AVATAR GROUP Visual (Extended and Connections Focused) */
+        .hero-visual {
+            transform: translateZ(10px) rotateY(0deg); /* Main central focus */
+            animation: paper-load-slide 1.5s ease-out;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .avatar-group-img-container {
+            width: 100%;
+            height: 60vh; /* Adjust as needed */
+            object-fit: contain;
+            /* Placeholder for high-end professional 4D Style avatars forming connections within a tribe */
+            background-image: url('https://via.placeholder.com/1300x600/000000/c994ff?text=ZIVO+4D+Avatar+Network+Connections+-+2026');
+            background-size: contain;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            margin-bottom: -150px; /* Overlap with feature section below */
+        }
+
+        /* Stylized connection overlays for visual feel */
+        .connection-indicator {
+            position: absolute;
+            bottom: 250px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(40px);
+            background: rgba(201, 148, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(201, 148, 255, 0.3);
+        }
+
+        /* --- FEATURES GRID (Paper Style, Translucent) --- */
+        .screenshots-container {
+            padding: 150px 0;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 70px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(201, 148, 255, 0.3);
+            background: rgba(201, 148, 255, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon-stylized {
+            color: var(--primary);
+            font-size: 32px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-sub);
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* --- SECURITY HUB & SECURE PAYMENT GATEWAY --- */
+        .security-hub {
+            padding: 150px 30px;
+            text-align: center;
+            background: linear-gradient(transparent, rgba(201, 148, 255, 0.02));
+        }
+
+        .security-details {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .security-badge-item {
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .security-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .pci-pci-badge-logo {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--pci-pci-badge);
+            border: 2px solid var(--pci-pci-badge);
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .gateway-mention {
+            margin-top: 50px;
+            color: var(--text-sub);
+            font-size: 14px;
+            border: 1px dashed var(--glass-border);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .payout-payout-title {
+            color: var(--safe-gold);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+        }
+
+        /* --- GIFTING & EARNING ECONOMY --- */
+        .gifting-economy {
+            padding: 150px 30px;
+            text-align: center;
+            background: rgba(17, 17, 17, 0.3);
+        }
+
+        .economy-diagram {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .diagram-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .diagram-step i {
+            color: var(--safe-gold);
+            font-size: 48px;
+        }
+
+        .diagram-arrow {
+            color: var(--glass-border);
+            font-size: 24px;
+        }
+
+        /* --- ABOUT ZIVO PARAGRAPH (Playstore Intro Style) --- */
+        .about-zivo-playstore {
+            padding: 150px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .playstore-copy {
+            color: var(--text-sub);
+            font-size: 18px;
+            line-height: 1.8;
+            border-radius: 30px;
+            background: var(--card-bg);
+            padding: 60px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .playstore-tag {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- FINAL CTA SECTION --- */
+        .final-cta {
+            padding: 150px 30px;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .cta-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .cta-badge {
+            width: 180px;
+            height: 54px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-badge:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(201, 148, 255, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 40px;
+            border-top: 1px solid var(--glass-border);
+            background-color: #000;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-sub);
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 28px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .footer-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 900px) {
+            header { padding: 0 30px; }
+            nav { gap: 15px; }
+            .hero-text h1 { font-size: clamp(40px, 6vw, 60px); }
+            .download-ctas { flex-direction: column; gap: 15px; }
+            .btn-secondary-link { order: -1; }
+            .feature-card { padding: 30px; }
+            .economy-diagram { grid-template-columns: 1fr; gap: 40px; }
+            .diagram-arrow { transform: rotate(90deg); }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <div class="logo">
-        <h1><span class="highlight">C</span>onnect</h1>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Download</a></li>
-        </ul>
-      </nav>
-      <a href="#" class="btn">Get Started</a>
-    </div>
-  </header>
+    <header>
+        <a href="#" class="logo">ZIVO</a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#security">Security Hub</a>
+            <a href="#gifting">Gifting Economy</a>
+            <a href="#about">About</a>
+            <button class="header-download-btn">Download Zivo</button>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h2>Find Your Perfect Match</h2>
-        <p>Discover genuine connections in a trusted community. Meet someone special today.</p>
-        <div class="hero-img-placeholder">
-          <p>Main Image Placeholder</p>
-        </div>
-        <a href="#" class="btn" style="margin-top: 20px">Join Now</a>
-      </div>
-    </div>
-  </section>
+    <section class="hero">
+        <div class="hero-split-container">
+            <div class="hero-text" data-paper-element>
+                <h1>Find Your Real Tribe,<br>Build Your Connection.</h1>
+                <p>Connect with genuine, verified people for fun, friendship, romance, and shared futures. Introducing the next generation of professional social and romantic discovery.</p>
+                <div class="download-ctas">
+                    <a href="https://www.zivoapp.in/app.apk" class="btn-download-app">
+                        <i>⬇</i> Download App (Android & iOS)
+                    </a>
+                    <a href="#features" class="btn-secondary-link">
+                        <i>Explore Connections →</i>
+                    </a>
+                </div>
+            </div>
 
-  <section class="features">
-    <div class="container">
-      <div class="features-grid">
-        <div class="feature-item">
-          <span class="icon-placeholder">❤</span>
-          <h3>Verified Profiles</h3>
-          <p>Connect with confidence. Our community uses active verification to help you find real people.</p>
+            <div class="hero-visual">
+                <div class="avatar-group-img-container" alt="Zivo 4D Avatar Network Connections, forming tribes and connections"></div>
+                <div class="connection-indicator">Verified Tribe Connection ✓</div>
+            </div>
         </div>
-        <div class="feature-item">
-          <span class="icon-placeholder">📍</span>
-          <h3>Local Connections</h3>
-          <p>Discover compatible singles right in your area. Find potential matches near you.</p>
-        </div>
-        <div class="feature-item">
-          <span class="icon-placeholder">💬</span>
-          <h3>Spark Conversation</h3>
-          <p>Our intuitive chat and icebreakers make it easy to make meaningful introductions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="profiles">
-    <div class="container">
-      <h3>Newest Members</h3>
-      <p>A few people from the community...</p>
-      <br>
-      <div class="profile-grid">
-        <div class="profile-card">
-          <div class="avatar-placeholder"></div>
-          <p><strong>Alex P.</strong>, 28</p>
-          <p>San Francisco, CA</p>
+    <section id="features" class="screenshots-container">
+        <h2 class="section-title">A Secure, Premium Social World</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon-stylized">✨</span>
+                <h3>Real Profile Verification</h3>
+                <p>Zivo utilizes biometric and direct profile verification, creating a Trusted Community where genuine interaction is guaranteed. Say goodbye to fakes.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon-stylized">⚡</span>
+                <h3>Smart Tribe Building</h3>
+                <p>Our advanced matching engine connects you with tribes and individuals based on shared professional goals, personal interests, and values. Find people who truly get you.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon-stylized">🛡️</span>
+                <h3>Next-Gen Gifting Economy</h3>
+                <p>Engage, share your world, and turn genuine tokens into real-world value securely. Your interactions have real impact, rewarding you for building connections.</p>
+            </div>
         </div>
-        <div class="profile-card">
-          <div class="avatar-placeholder"></div>
-          <p><strong>Jamie L.</strong>, 31</p>
-          <p>Chicago, IL</p>
-        </div>
-        <div class="profile-card">
-          <div class="avatar-placeholder"></div>
-          <p><strong>Morgan K.</strong>, 25</p>
-          <p>Austin, TX</p>
-        </div>
-        <div class="profile-card">
-          <div class="avatar-placeholder"></div>
-          <p><strong>Taylor S.</strong>, 29</p>
-          <p>Seattle, WA</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Connect App. All rights reserved.</p>
-      <a href="#" style="color: #ccc; margin-right: 15px">Privacy Policy</a>
-      <a href="#" style="color: #ccc">Terms of Service</a>
-    </div>
-  </footer>
+    <section id="security" class="security-hub">
+        <h2 class="section-title">Safe, Secure & Cash-Free Payments</h2>
+        <p style="max-width: 750px; margin: 0 auto; color: var(--text-sub); font-size: 18px; line-height: 1.7;">
+            We utilize military-grade encryption and partner with industry leading payment processors for full compliance and peace of mind. Your data and earnings are always protected.
+        </p>
+        
+        <div class="security-details">
+            <div class="security-badge-item">
+                <div class="pci-pci-badge-logo">PCI-DSS Compliant</div>
+                <div class="security-icon" style="color: var(--secondary)">🔒</div>
+                <h3>Fully Encrypted Interaction</h3>
+                <p>End-to-End Encryption for all messaging, video calls, and profile data. We ensure your privacy is paramount.</p>
+            </div>
+            <div class="security-badge-item">
+                <div class="payout-payout-title">Secure Payout Gateway</div>
+                <div class="security-icon" style="color: var(--safe-gold)">💳</div>
+                <h3>Integrated Payouts via CashFree</h3>
+                <p>CashFree is our official partner for all secure virtual gift conversions and direct payouts. Safe, seamless transactions for a trusted social economy.</p>
+            </div>
+            <div class="security-badge-item">
+                <div class="security-icon" style="color: var(--primary)">🛡️</div>
+                <h3>Verified Identity Profiles</h3>
+                <p>Profiles undergo rigorous verification to maintain the authenticity of attractions and connections within the network.</p>
+            </div>
+        </div>
+        
+        <div class="gateway-mention">
+            Your transactions are secure. Integrated with the <span style="font-weight:700; color: #fff;">CashFree</span> payment gateway for guaranteed security and compliance.
+        </div>
+    </section>
+
+    <section id="gifting" class="gifting-economy">
+        <h2 class="section-title">Discover the Zivo World</h2>
+        <div class="economy-diagram">
+            <div class="diagram-step">
+                <i>✨</i>
+                <h3>Engage & Share</h3>
+                <p>Host tribes, create content, or simply interact with genuine connections.</p>
+            </div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-step">
+                <i>💰</i>
+                <h3>Earn Virtual Gifts</h3>
+                <p>Recieve tokens from connections, convertable to real value through our secure economy.</p>
+            </div>
+            <div class="diagram-arrow">→</div>
+            <div class="diagram-step">
+                <i>💵</i>
+                <h3>Secure Cash Payouts</h3>
+                <p>Convert virtual earnings to cash through our secure CashFree-integrated payout gateway.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-zivo-playstore">
+        <h2 class="section-title">About ZIVO</h2>
+        <div class="playstore-copy">
+            <div class="playstore-tag">Professional Social Discovery</div>
+            <p><strong>Step into the next chapter of human connection.</strong> Zivo is more than a dating app; it's a social discovery engine designed to help you find your professional and social tribe, and cultivate deep, genuine connections. Launched with a future-first vision for 2026, Zivo leverages advanced verification, smart matching, video connection, and a robust virtual gift economy integrated with leading payment gateways like CashFree for secure, cash-free transactions. Connect with confidence, share your world, and turn every interaction into a moment of value. Download Zivo today and build your network with real people, real connection, and real security.</p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2 style="font-size: 36px; margin-bottom: 40px; font-weight: 800;">Begin Your Zivo Journey</h2>
+        <div class="cta-badges">
+            <div class="cta-badge" alt="Download on App Store">App Store Badge</div>
+            <div class="cta-badge" alt="Get it on Google Play">Google Play Badge</div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">Zivo</span>
+        <p>Connect with Real Connections, Earn Real Rewards.</p>
+        <p>Launched in 2026, ZivoApp is the future of secure, genuine social networking.</p>
+        <p>© 2026 ZivoApp Inc. | All rights reserved.</p>
+        <p>Support: <a href="mailto:support@zivoapp.in">support@zivoapp.in</a></p>
+        <div class="footer-links">
+            <a href="https://www.zivoapp.in/privacy">Privacy Policy</a>
+            <a href="https://www.zivoapp.in/terms">Terms of Service</a>
+            <a href="https://www.zivoapp.in/help">Help Center</a>
+            <a href="https://www.zivoapp.in/security">Security Statement</a>
+        </div>
+    </footer>
 
 </body>
 </html>
