@@ -1,272 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zivo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zivo App | Professional Social Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffc3;
+            --secondary: #00bfff;
+            --dark-bg: #080a12;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --shadow-5d: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            background-attachment: fixed;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f2027,#1a1a2e,#16213e);
-color:white;
-overflow-x:hidden;
-}
+        /* --- 5D BACKGROUND ANIMATION --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #080a12 100%);
+        }
 
-/* BUBBLES */
-.bubbles span{
-position:absolute;
-bottom:-100px;
-width:20px;
-height:20px;
-background:rgba(0,255,200,0.15);
-border-radius:50%;
-animation:rise 12s infinite;
-}
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-@keyframes rise{
-0%{transform:translateY(0);opacity:0;}
-50%{opacity:0.5;}
-100%{transform:translateY(-120vh);opacity:0;}
-}
+        .bubbles span {
+            position: absolute;
+            bottom: -120px;
+            background: linear-gradient(to top, rgba(0, 255, 195, 0.2), transparent);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in-out;
+            filter: blur(2px);
+        }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-padding:15px 20px;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:10;
-}
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
+            30% { opacity: 0.6; }
+            100% { transform: translateY(-130vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
 
-.logo{
-font-size:24px;
-font-weight:700;
-color:#00ffc3;
-text-shadow:0 0 15px #00ffc3;
-}
+        /* --- PROFESSIONAL HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            background: rgba(8, 10, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+        }
 
-.btn{
-background:linear-gradient(45deg,#00ffc3,#00bfff);
-color:black;
-padding:10px 20px;
-border:none;
-border-radius:25px;
-cursor:pointer;
-font-weight:600;
-}
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 255, 195, 0.4);
+            transition: 0.5s;
+        }
 
-/* HERO */
-.hero{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-justify-content:center;
-padding:100px 20px 50px;
-text-align:center;
-}
+        .logo:hover { transform: scale(1.05); filter: brightness(1.2); }
 
-.hero-text{
-max-width:500px;
-}
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 255, 195, 0.2);
+        }
 
-.hero h1{
-font-size:50px;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 255, 195, 0.4);
+            filter: brightness(1.1);
+        }
 
-.hero img{
-width:280px;
-border-radius:20px;
-margin:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
+        /* --- HERO SECTION (5D LAYERING) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 10% 80px;
+            perspective: 1000px;
+        }
 
-/* PAPER STYLE CARD */
-.card{
-background:white;
-color:black;
-border-radius:15px;
-padding:20px;
-margin:10px;
-width:250px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-border:2px solid #e0e0e0;
-transition:0.3s;
-}
+        .hero-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1200px;
+        }
 
-.card:hover{
-transform:translateY(-8px);
-}
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            z-index: 2;
+        }
 
-/* SECTIONS */
-.section{
-padding:60px 20px;
-text-align:center;
-}
+        .hero h1 {
+            font-size: clamp(60px, 8vw, 90px);
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 40%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
+        .hero p.tagline {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
 
-/* IMAGES */
-.people{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
+        .hero-desc {
+            font-size: 17px;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
 
-.people img{
-width:220px;
-border-radius:20px;
-margin:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
+        .hero-image-wrap {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: floatHero 6s ease-in-out infinite;
+        }
 
-/* TRUST BOX */
-.trust{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:15px;
-max-width:600px;
-margin:auto;
-}
+        @keyframes floatHero {
+            0%, 100% { transform: translateY(0) rotateY(-10deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
+        }
 
-/* FOOTER */
-footer{
-background:black;
-padding:30px;
-text-align:center;
-}
+        .hero img {
+            width: 320px;
+            border-radius: 30px;
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-5d);
+        }
 
-a{
-color:#00ffc3;
-text-decoration:none;
-}
+        /* --- PAPER STYLE CARDS (RE-IMAGINED) --- */
+        .section { padding: 100px 8%; text-align: center; }
+        .section h2 { font-size: 42px; margin-bottom: 60px; font-family: 'Poppins'; font-weight: 700; }
 
-/* MOBILE */
-@media(max-width:768px){
-.hero{
-flex-direction:column;
-}
-.hero img{
-width:90%;
-}
-.card{
-width:90%;
-}
-}
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
 
-</style>
+        .card {
+            background: white; /* Maintaining your Paper Style Request */
+            color: #111;
+            border-radius: 24px;
+            padding: 40px 30px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 10px 10px 0px var(--primary);
+            border: 1px solid #ddd;
+            transition: all 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 15px 15px 0px var(--secondary);
+        }
+
+        /* --- PEOPLE GRID --- */
+        .people {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .people img {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 25px;
+            filter: grayscale(20%) brightness(0.9);
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid var(--border-glass);
+        }
+
+        .people img:hover {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 195, 0.3);
+        }
+
+        /* --- TRUST SECTION --- */
+        .trust {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(15px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0,255,195,0.05) 0%, transparent 70%);
+        }
+
+        .trust p { font-size: 18px; color: #d0d0d0; position: relative; z-index: 1; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #040508;
+            padding: 80px 8% 40px;
+            border-top: 1px solid var(--border-glass);
+            text-align: center;
+        }
+
+        footer p { color: #666; margin-bottom: 20px; }
+        footer a { 
+            margin: 0 15px; 
+            font-size: 14px; 
+            transition: 0.3s; 
+            opacity: 0.7; 
+            text-transform: uppercase; 
+            font-weight: 600;
+        }
+        footer a:hover { opacity: 1; color: var(--primary); }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media(max-width:992px) {
+            .hero-text { text-align: center; }
+            .hero h1 { font-size: 55px; }
+            .hero-desc { margin: 0 auto 40px; }
+        }
+
+        @media(max-width:768px){
+            header { padding: 15px 5%; }
+            .hero { padding-top: 100px; }
+            .hero img { width: 80%; max-width: 280px; }
+            .card { min-height: 100px; padding: 20px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- BUBBLES -->
-<div class="bubbles">
-<span style="left:10%"></span>
-<span style="left:30%"></span>
-<span style="left:60%"></span>
-<span style="left:80%"></span>
-</div>
+    <div id="bg-canvas"></div>
+    <div class="bubbles" id="bubbleContainer"></div>
 
-<!-- HEADER -->
-<header>
-<div class="logo">ZIVO</div>
-<a href="#download"><button class="btn">Download</button></a>
-</header>
+    <header>
+        <div class="logo">ZIVO</div>
+        <a href="#download"><button class="btn">Download</button></a>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>ZIVO</h1>
+                <p class="tagline">Connect • Communicate • Earn</p>
+                <p class="hero-desc">
+                    Zivo is a secure social networking platform where users can connect through
+                    real-time audio and video communication. Enjoy meaningful conversations,
+                    virtual rewards, and a trusted environment.
+                </p>
+                <a href="https://www.zivoapp.in/app.apk">
+                    <button class="btn" style="padding: 18px 45px; font-size: 16px;">Download APK</button>
+                </a>
+            </div>
+            <div class="hero-image-wrap">
+                <img src="https://images.pexels.com/photos/3783094/pexels-photo-3783094.jpeg" alt="Zivo App">
+            </div>
+        </div>
+    </section>
 
-<div class="hero-text">
-<h1>ZIVO</h1>
-<p>Connect • Communicate • Earn</p>
+    <section class="section" id="features">
+        <h2>Features</h2>
+        <div class="cards">
+            <div class="card">📞 Live Audio & Video Calls</div>
+            <div class="card">💰 Earn Rewards & Coins</div>
+            <div class="card">🔍 Find and Connect Friends</div>
+            <div class="card">🔐 Secure & Verified Platform</div>
+        </div>
+    </section>
 
-<p>
-Zivo is a secure social networking platform where users can connect through
-real-time audio and video communication. Enjoy meaningful conversations,
-virtual rewards, and a trusted environment.
-</p>
+    <section class="section">
+        <h2>Connect with Real People</h2>
+        <div class="people">
+            <img src="https://images.pexels.com/photos/3752844/pexels-photo-3752844.jpeg" alt="User">
+            <img src="https://images.pexels.com/photos/3808175/pexels-photo-3808175.jpeg" alt="User">
+            <img src="https://images.pexels.com/photos/4008461/pexels-photo-4008461.jpeg" alt="User">
+        </div>
+    </section>
 
-<a href="https://www.zivoapp.in/app.apk">
-<button class="btn">Download APK</button>
-</a>
-</div>
+    <section class="section">
+        <div class="trust">
+            <h2 style="margin-bottom: 20px;">Safe & Secure</h2>
+            <p>
+                Zivo ensures user privacy and secure transactions using trusted payment systems.
+                All payments are processed through reliable gateways and user data is protected.
+                We follow industry standards to provide a safe and trusted experience.
+            </p>
+        </div>
+    </section>
 
-<img src="https://images.pexels.com/photos/3783094/pexels-photo-3783094.jpeg">
+    <section class="section" id="download">
+        <h2 style="margin-bottom: 10px;">Start Now</h2>
+        <p style="color:var(--primary); font-weight: 600; margin-bottom: 30px;">Safe • Secure • Trusted Platform</p>
+        <a href="https://www.zivoapp.in/app.apk">
+            <button class="btn" style="padding: 20px 60px;">Download APK</button>
+        </a>
+    </section>
 
-</section>
+    <footer>
+        <div class="logo" style="font-size: 20px; margin-bottom: 20px;">ZIVO</div>
+        <p>© 2026 ZivoApp</p>
+        <div style="margin-top: 20px;">
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+    </footer>
 
-<!-- FEATURES -->
-<section class="section">
-<h2>Features</h2>
+    <script>
+        // Dynamic 5D Bubble Generation
+        const container = document.getElementById('bubbleContainer');
+        function createBubble() {
+            const bubble = document.createElement('span');
+            const size = Math.random() * 60 + 10 + 'px';
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDuration = Math.random() * 10 + 8 + 's';
+            bubble.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(bubble);
+            
+            setTimeout(() => { bubble.remove(); }, 15000);
+        }
+        setInterval(createBubble, 1500);
 
-<div class="cards">
-<div class="card">📞 Live Audio & Video Calls</div>
-<div class="card">💰 Earn Rewards & Coins</div>
-<div class="card">🔍 Find and Connect Friends</div>
-<div class="card">🔐 Secure & Verified Platform</div>
-</div>
-
-</section>
-
-<!-- PEOPLE -->
-<section class="section">
-<h2>Connect with Real People</h2>
-
-<div class="people">
-<img src="https://images.pexels.com/photos/3752844/pexels-photo-3752844.jpeg">
-<img src="https://images.pexels.com/photos/3808175/pexels-photo-3808175.jpeg">
-<img src="https://images.pexels.com/photos/4008461/pexels-photo-4008461.jpeg">
-</div>
-
-</section>
-
-<!-- TRUST -->
-<section class="section">
-<h2>Safe & Secure</h2>
-
-<div class="trust">
-<p>
-Zivo ensures user privacy and secure transactions using trusted payment systems.
-All payments are processed through reliable gateways and user data is protected.
-We follow industry standards to provide a safe and trusted experience.
-</p>
-</div>
-
-</section>
-
-<!-- DOWNLOAD -->
-<section class="section" id="download">
-<h2>Start Now</h2>
-
-<a href="https://www.zivoapp.in/app.apk">
-<button class="btn">Download APK</button>
-</a>
-
-<p>Safe • Secure • Trusted Platform</p>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-
-<p>© 2026 ZivoApp</p>
-
-<a href="privacy.html">Privacy Policy</a> |
-<a href="terms.html">Terms</a> |
-<a href="contact.html">Contact</a>
-
-</footer>
-
+        // Smooth Scroll for Button
+        document.querySelector('a[href^="#"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
