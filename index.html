@@ -3,681 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZIVO | Find Your Real Connection, Earn Real Rewards - 2026 Social-Dating Revolution</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>ZIVO | The Royal Social Experience 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c994ff; /* Zivo Purple */
-            --secondary: #00ffcc; /* Mint Accent */
-            --bg-dark: #000000; /* Pure black */
-            --bg-interface: #111111; /* Interface black */
-            --card-bg: rgba(255, 255, 255, 0.03); /* Translucent interface */
-            --glass-border: rgba(255, 255, 255, 0.08); /* Interface line */
-            --text-main: #ffffff;
-            --text-sub: rgba(255, 255, 255, 0.6);
-            --interface-icon-green: #2ecc71; /* Verified status */
-            --safe-gold: #f1c40f; /* Secure payment highlight */
-            --pci-pci-badge: #e74c3c; /* PCI-DSS Compliant */
+            --royal-gold: #D4AF37;
+            --deep-gold: #996515;
+            --midnight: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-gold: #f3e5ab;
+            --transition-speed: 180s; /* 3 minutes for bg shift */
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
         body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--midnight);
+            color: #fff;
             overflow-x: hidden;
-            perspective: 2px; /* Smooth paper parallax effect */
-            scroll-behavior: smooth; /* Smoother scrolling experience */
+            animation: bgShift var(--transition-speed) infinite linear;
         }
 
-        /* --- Global Paper/4D Styles --- */
-        [data-paper-element] {
-            transform-style: preserve-3d;
-            animation: paper-load-slide 1.2s ease-out;
+        @keyframes bgShift {
+            0% { background-color: #050505; }
+            33% { background-color: #080510; }
+            66% { background-color: #050a08; }
+            100% { background-color: #050505; }
         }
 
-        [data-paper-element]:hover {
-            transform: translateY(-5px) scale(1.02) !important;
-        }
-
-        @keyframes paper-load-slide {
-            0% { transform: perspective(800px) rotateY(-5deg) translateZ(-50px); opacity: 0; }
-            100% { transform: perspective(800px) rotateY(0deg) translateZ(0px); opacity: 1; }
-        }
-
-        /* --- HEADER (Translucent, Glassmorphic) --- */
-        header {
+        /* --- 5D Liquid Ripple Canvas --- */
+        #canvas-ripple {
             position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* --- Background Bubbles --- */
+        .bubble-container {
+            position: fixed;
+            width: 100%; height: 100%;
+            z-index: 0;
+            overflow: hidden;
             top: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- Header Marquee --- */
+        .top-marquee {
             width: 100%;
-            height: 80px;
-            background: rgba(17, 17, 17, 0.6);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
+            height: 35px;
+            background: var(--royal-gold);
+            color: #000;
             display: flex;
             align-items: center;
-            padding: 0 60px;
-            box-sizing: border-box;
+            overflow: hidden;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            position: fixed;
+            top: 0; z-index: 1002;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        header {
+            position: fixed;
+            top: 35px;
+            width: 100%;
+            height: 90px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            z-index: 1001;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 28px;
-            background: linear-gradient(135deg, #fff, var(--primary));
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            color: var(--royal-gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            text-decoration: none;
+            letter-spacing: 5px;
+            transition: 0.5s;
+        }
+
+        .logo:hover { transform: scale(1.1); filter: brightness(1.2); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 110vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 85px;
+            line-height: 1;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, var(--royal-gold), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-decoration: none;
         }
 
-        nav {
-            margin-left: auto;
+        .hero-content p {
+            font-size: 20px;
+            color: #ccc;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* --- Premium Cards --- */
+        .card-container {
             display: flex;
             gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-sub);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--text-main);
-        }
-
-        .header-download-btn {
-            background-color: transparent;
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 50px;
-            border: 1px solid var(--primary);
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .header-download-btn:hover {
-            background-color: var(--primary);
-            color: #000;
-        }
-
-        /* --- HERO SECTION - Zivo World --- */
-        .hero {
-            height: 100vh;
-            display: flex;
             justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
+            padding: 100px 50px;
+            z-index: 2;
             position: relative;
-            padding: 0 40px;
-            overflow: hidden;
-            margin-top: 80px; /* Offset for fixed header */
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .royal-card {
+            width: 320px;
+            height: 480px;
+            background: var(--glass);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .royal-card:hover {
+            transform: translateY(-20px) rotateY(10deg);
+            border-color: var(--royal-gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-img {
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(201, 148, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 40%);
-            z-index: -1;
+            object-fit: cover;
+            filter: grayscale(40%) brightness(0.8);
+            transition: 0.5s;
         }
 
-        /* Center Content (Text + Visual) */
-        .hero-split-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-            max-width: 1300px;
-            width: 100%;
-            text-align: center;
-        }
+        .royal-card:hover .card-img { filter: grayscale(0%) brightness(1); }
 
-        /* Headline & Subheadline */
-        .hero-text h1 {
-            font-size: clamp(60px, 7vw, 100px);
-            margin: 0;
-            background: linear-gradient(135deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -3px;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-
-        .hero-text p {
-            font-size: 22px;
-            color: var(--text-sub);
-            margin-bottom: 50px;
-            max-width: 750px;
-            line-height: 1.6;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* CTA Buttons (Download) */
-        .download-ctas {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .btn-download-app {
-            position: relative;
-            padding: 18px 45px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #000;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-download-app:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 35px rgba(0, 255, 204, 0.7);
-        }
-
-        .btn-download-app::after {
-            content: '';
+        .card-info {
             position: absolute;
-            top: -50%;
-            left: -150%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.3);
-            transform: rotate(45deg);
-            transition: 0.6s;
-        }
-
-        .btn-download-app:hover::after {
-            left: 150%;
-        }
-
-        .btn-secondary-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: opacity 0.3s;
-        }
-        
-        .btn-secondary-link:hover {
-            opacity: 0.8;
-        }
-
-        /* LARGE CENTRAL 4D AVATAR GROUP Visual (Extended and Connections Focused) */
-        .hero-visual {
-            transform: translateZ(10px) rotateY(0deg); /* Main central focus */
-            animation: paper-load-slide 1.5s ease-out;
-            max-width: 1300px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .avatar-group-img-container {
+            bottom: 0;
             width: 100%;
-            height: 60vh; /* Adjust as needed */
-            object-fit: contain;
-            /* Placeholder for high-end professional 4D Style avatars forming connections within a tribe */
-            background-image: url('https://via.placeholder.com/1300x600/000000/c994ff?text=ZIVO+4D+Avatar+Network+Connections+-+2026');
-            background-size: contain;
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            margin-bottom: -150px; /* Overlap with feature section below */
-        }
-
-        /* Stylized connection overlays for visual feel */
-        .connection-indicator {
-            position: absolute;
-            bottom: 250px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(40px);
-            background: rgba(201, 148, 255, 0.1);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(201, 148, 255, 0.3);
-        }
-
-        /* --- FEATURES GRID (Paper Style, Translucent) --- */
-        .screenshots-container {
-            padding: 150px 0;
-            background: linear-gradient(to bottom, transparent, #0a0a0a);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(32px, 5vw, 48px);
-            margin-bottom: 70px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(201, 148, 255, 0.3);
-            background: rgba(201, 148, 255, 0.03);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon-stylized {
-            color: var(--primary);
-            font-size: 32px;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: var(--text-sub);
-            font-size: 16px;
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        /* --- SECURITY HUB & SECURE PAYMENT GATEWAY --- */
-        .security-hub {
-            padding: 150px 30px;
-            text-align: center;
-            background: linear-gradient(transparent, rgba(201, 148, 255, 0.02));
-        }
-
-        .security-details {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .security-badge-item {
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            background: var(--card-bg);
             padding: 30px;
+            background: linear-gradient(transparent, #000);
+        }
+
+        /* --- Store Buttons --- */
+        .store-btns {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .security-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        
-        .pci-pci-badge-logo {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--pci-pci-badge);
-            border: 2px solid var(--pci-pci-badge);
-            padding: 4px 10px;
-            border-radius: 6px;
-            text-transform: uppercase;
-            margin-top: -10px;
-            margin-bottom: 10px;
-        }
-
-        .gateway-mention {
-            margin-top: 50px;
-            color: var(--text-sub);
-            font-size: 14px;
-            border: 1px dashed var(--glass-border);
-            padding: 20px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-
-        .payout-payout-title {
-            color: var(--safe-gold);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: -15px;
-            margin-bottom: 10px;
-        }
-
-        /* --- GIFTING & EARNING ECONOMY --- */
-        .gifting-economy {
-            padding: 150px 30px;
-            text-align: center;
-            background: rgba(17, 17, 17, 0.3);
-        }
-
-        .economy-diagram {
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 50px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            margin-top: 60px;
-        }
-
-        .diagram-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .diagram-step i {
-            color: var(--safe-gold);
-            font-size: 48px;
-        }
-
-        .diagram-arrow {
-            color: var(--glass-border);
-            font-size: 24px;
-        }
-
-        /* --- ABOUT ZIVO PARAGRAPH (Playstore Intro Style) --- */
-        .about-zivo-playstore {
-            padding: 150px 30px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .playstore-copy {
-            color: var(--text-sub);
-            font-size: 18px;
-            line-height: 1.8;
-            border-radius: 30px;
-            background: var(--card-bg);
-            padding: 60px;
-            border: 1px solid var(--glass-border);
-            position: relative;
-        }
-
-        .playstore-tag {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--secondary);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* --- FINAL CTA SECTION --- */
-        .final-cta {
-            padding: 150px 30px;
-            text-align: center;
-            background-color: #000;
-        }
-
-        .cta-badges {
-            display: flex;
-            justify-content: center;
             gap: 20px;
+            justify-content: center;
             margin-top: 50px;
         }
-        
-        .cta-badge {
-            width: 180px;
-            height: 54px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-        
-        .cta-badge:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(201, 148, 255, 0.4);
-        }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 80px 40px;
-            border-top: 1px solid var(--glass-border);
-            background-color: #000;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--text-sub);
-            font-size: 14px;
-            margin: 8px 0;
-        }
-
-        .footer-logo {
-            font-weight: 800;
-            font-size: 28px;
-            background: linear-gradient(135deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        .footer-links {
-            margin-top: 30px;
+        .btn-store {
             display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        footer a {
-            color: var(--secondary);
+            align-items: center;
+            gap: 15px;
+            background: #000;
+            border: 2px solid var(--royal-gold);
+            padding: 15px 35px;
+            border-radius: 15px;
+            color: #fff;
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: var(--primary);
+            font-weight: 600;
+            transition: 0.4s;
         }
 
-        /* --- Responsive Styles --- */
-        @media (max-width: 900px) {
-            header { padding: 0 30px; }
-            nav { gap: 15px; }
-            .hero-text h1 { font-size: clamp(40px, 6vw, 60px); }
-            .download-ctas { flex-direction: column; gap: 15px; }
-            .btn-secondary-link { order: -1; }
-            .feature-card { padding: 30px; }
-            .economy-diagram { grid-template-columns: 1fr; gap: 40px; }
-            .diagram-arrow { transform: rotate(90deg); }
+        .btn-store:hover {
+            background: var(--royal-gold);
+            color: #000;
+            box-shadow: 0 0 30px var(--royal-gold);
+        }
+
+        .btn-store svg { width: 30px; height: 30px; fill: currentColor; }
+
+        /* --- Security Section --- */
+        .security-wrap {
+            padding: 150px 100px;
+            background: rgba(212, 175, 55, 0.03);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .policy-item h3 { color: var(--royal-gold); margin-bottom: 20px; font-family: 'Cinzel'; }
+        .policy-item p { line-height: 1.8; color: #aaa; }
+
+        /* Custom Cursor */
+        #cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--royal-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        footer {
+            padding: 100px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            background: #000;
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
 
+    <div id="cursor"></div>
+    <canvas id="canvas-ripple"></canvas>
+    
+    <div class="bubble-container" id="bubbles"></div>
+
+    <div class="top-marquee">
+        <div class="marquee-content">
+            ✦ 500,000+ Premium Members Joined ✦ Live 6D Interactive Streaming Active ✦ Secure Payouts Processed Hourly ✦ Zivo: Redefining Luxury Social Interaction 2026 ✦ 
+        </div>
+    </div>
+
     <header>
         <a href="#" class="logo">ZIVO</a>
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#security">Security Hub</a>
-            <a href="#gifting">Gifting Economy</a>
-            <a href="#about">About</a>
-            <button class="header-download-btn">Download Zivo</button>
-        </nav>
+        <div style="display: flex; gap: 40px;">
+            <a href="#about" style="color: #fff; text-decoration: none; font-weight: 600;">Experience</a>
+            <a href="#secure" style="color: #fff; text-decoration: none; font-weight: 600;">Security</a>
+            <a href="#download" style="color: #fff; text-decoration: none; font-weight: 600;">App</a>
+        </div>
     </header>
 
     <section class="hero">
-        <div class="hero-split-container">
-            <div class="hero-text" data-paper-element>
-                <h1>Find Your Real Tribe,<br>Build Your Connection.</h1>
-                <p>Connect with genuine, verified people for fun, friendship, romance, and shared futures. Introducing the next generation of professional social and romantic discovery.</p>
-                <div class="download-ctas">
-                    <a href="https://www.zivoapp.in/app.apk" class="btn-download-app">
-                        <i>⬇</i> Download App (Android & iOS)
-                    </a>
-                    <a href="#features" class="btn-secondary-link">
-                        <i>Explore Connections →</i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="avatar-group-img-container" alt="Zivo 4D Avatar Network Connections, forming tribes and connections"></div>
-                <div class="connection-indicator">Verified Tribe Connection ✓</div>
+        <div class="hero-content">
+            <h1>Elegance in Connection.</h1>
+            <p>The world's most exclusive social platform. Real people. Royal interaction. Instant rewards.</p>
+            <div class="store-btns">
+                <a href="#" class="btn-store">
+                    <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-127.3-60.1-60.1L47 499z"/></svg>
+                    <div><small>Get it on</small><br>Google Play</div>
+                </a>
+                <a href="#" class="btn-store">
+                    <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    <div><small>Download on the</small><br>App Store</div>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="features" class="screenshots-container">
-        <h2 class="section-title">A Secure, Premium Social World</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <span class="feature-icon-stylized">✨</span>
-                <h3>Real Profile Verification</h3>
-                <p>Zivo utilizes biometric and direct profile verification, creating a Trusted Community where genuine interaction is guaranteed. Say goodbye to fakes.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon-stylized">⚡</span>
-                <h3>Smart Tribe Building</h3>
-                <p>Our advanced matching engine connects you with tribes and individuals based on shared professional goals, personal interests, and values. Find people who truly get you.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon-stylized">🛡️</span>
-                <h3>Next-Gen Gifting Economy</h3>
-                <p>Engage, share your world, and turn genuine tokens into real-world value securely. Your interactions have real impact, rewarding you for building connections.</p>
+    <div class="card-container">
+        <div class="royal-card">
+            <img src="https://images.pexels.com/photos/157675/fashion-men-s-fashion-man-portrait-157675.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img">
+            <div class="card-info">
+                <h2 style="color:var(--royal-gold)">Alexander, 28</h2>
+                <p>Tech Architect • Verified Tribe</p>
             </div>
         </div>
-    </section>
+        <div class="royal-card">
+            <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img">
+            <div class="card-info">
+                <h2 style="color:var(--royal-gold)">Sophia, 26</h2>
+                <p>Designer • Elite Circle</p>
+            </div>
+        </div>
+        <div class="royal-card">
+            <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img">
+            <div class="card-info">
+                <h2 style="color:var(--royal-gold)">Julian, 31</h2>
+                <p>Entrepreneur • High Impact</p>
+            </div>
+        </div>
+    </div>
 
-    <section id="security" class="security-hub">
-        <h2 class="section-title">Safe, Secure & Cash-Free Payments</h2>
-        <p style="max-width: 750px; margin: 0 auto; color: var(--text-sub); font-size: 18px; line-height: 1.7;">
-            We utilize military-grade encryption and partner with industry leading payment processors for full compliance and peace of mind. Your data and earnings are always protected.
-        </p>
+    <section id="secure" class="security-wrap">
+        <h2 style="font-family:'Cinzel'; font-size: 50px; margin-bottom: 20px;">Safety Without Compromise</h2>
+        <p>Zivo utilizes advanced bank-grade infrastructure to ensure your privacy and earnings are handled with extreme care.</p>
         
-        <div class="security-details">
-            <div class="security-badge-item">
-                <div class="pci-pci-badge-logo">PCI-DSS Compliant</div>
-                <div class="security-icon" style="color: var(--secondary)">🔒</div>
-                <h3>Fully Encrypted Interaction</h3>
-                <p>End-to-End Encryption for all messaging, video calls, and profile data. We ensure your privacy is paramount.</p>
+        <div class="policy-grid">
+            <div class="policy-item">
+                <h3>Secure Gateway</h3>
+                <p>All virtual transactions are shielded by multi-layer encryption. We ensure seamless and protected reward processing directly to your account.</p>
             </div>
-            <div class="security-badge-item">
-                <div class="payout-payout-title">Secure Payout Gateway</div>
-                <div class="security-icon" style="color: var(--safe-gold)">💳</div>
-                <h3>Integrated Payouts via CashFree</h3>
-                <p>CashFree is our official partner for all secure virtual gift conversions and direct payouts. Safe, seamless transactions for a trusted social economy.</p>
+            <div class="policy-item">
+                <h3>Verified Privacy</h3>
+                <p>Your data is yours. Zivo uses end-to-end encryption for all live interactions and media sharing. No third-party tracking, ever.</p>
             </div>
-            <div class="security-badge-item">
-                <div class="security-icon" style="color: var(--primary)">🛡️</div>
-                <h3>Verified Identity Profiles</h3>
-                <p>Profiles undergo rigorous verification to maintain the authenticity of attractions and connections within the network.</p>
+            <div class="policy-item">
+                <h3>Live Interaction</h3>
+                <p>Experience the most fluid live social atmosphere. Every video call and message is authenticated to ensure a bot-free, royal environment.</p>
             </div>
-        </div>
-        
-        <div class="gateway-mention">
-            Your transactions are secure. Integrated with the <span style="font-weight:700; color: #fff;">CashFree</span> payment gateway for guaranteed security and compliance.
-        </div>
-    </section>
-
-    <section id="gifting" class="gifting-economy">
-        <h2 class="section-title">Discover the Zivo World</h2>
-        <div class="economy-diagram">
-            <div class="diagram-step">
-                <i>✨</i>
-                <h3>Engage & Share</h3>
-                <p>Host tribes, create content, or simply interact with genuine connections.</p>
-            </div>
-            <div class="diagram-arrow">→</div>
-            <div class="diagram-step">
-                <i>💰</i>
-                <h3>Earn Virtual Gifts</h3>
-                <p>Recieve tokens from connections, convertable to real value through our secure economy.</p>
-            </div>
-            <div class="diagram-arrow">→</div>
-            <div class="diagram-step">
-                <i>💵</i>
-                <h3>Secure Cash Payouts</h3>
-                <p>Convert virtual earnings to cash through our secure CashFree-integrated payout gateway.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about-zivo-playstore">
-        <h2 class="section-title">About ZIVO</h2>
-        <div class="playstore-copy">
-            <div class="playstore-tag">Professional Social Discovery</div>
-            <p><strong>Step into the next chapter of human connection.</strong> Zivo is more than a dating app; it's a social discovery engine designed to help you find your professional and social tribe, and cultivate deep, genuine connections. Launched with a future-first vision for 2026, Zivo leverages advanced verification, smart matching, video connection, and a robust virtual gift economy integrated with leading payment gateways like CashFree for secure, cash-free transactions. Connect with confidence, share your world, and turn every interaction into a moment of value. Download Zivo today and build your network with real people, real connection, and real security.</p>
-        </div>
-    </section>
-
-    <section class="final-cta">
-        <h2 style="font-size: 36px; margin-bottom: 40px; font-weight: 800;">Begin Your Zivo Journey</h2>
-        <div class="cta-badges">
-            <div class="cta-badge" alt="Download on App Store">App Store Badge</div>
-            <div class="cta-badge" alt="Get it on Google Play">Google Play Badge</div>
         </div>
     </section>
 
     <footer>
-        <span class="footer-logo">Zivo</span>
-        <p>Connect with Real Connections, Earn Real Rewards.</p>
-        <p>Launched in 2026, ZivoApp is the future of secure, genuine social networking.</p>
-        <p>© 2026 ZivoApp Inc. | All rights reserved.</p>
-        <p>Support: <a href="mailto:support@zivoapp.in">support@zivoapp.in</a></p>
-        <div class="footer-links">
-            <a href="https://www.zivoapp.in/privacy">Privacy Policy</a>
-            <a href="https://www.zivoapp.in/terms">Terms of Service</a>
-            <a href="https://www.zivoapp.in/help">Help Center</a>
-            <a href="https://www.zivoapp.in/security">Security Statement</a>
+        <h1 class="logo" style="margin-bottom: 30px;">ZIVO</h1>
+        <p style="color: #666; max-width: 600px; margin: 0 auto 40px auto;">
+            Designed for those who value authenticity and luxury. ZivoApp Inc. 2026.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+            <a href="#" style="color: var(--royal-gold); text-decoration: none;">Privacy Policy</a>
+            <a href="#" style="color: var(--royal-gold); text-decoration: none;">Terms of Luxury</a>
+            <a href="#" style="color: var(--royal-gold); text-decoration: none;">Security Shield</a>
         </div>
     </footer>
 
+    <script>
+        // Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Bubble Generation
+        const bubbleContainer = document.getElementById('bubbles');
+        function createBubble() {
+            const b = document.createElement('div');
+            b.className = 'bubble';
+            const size = Math.random() * 60 + 10 + 'px';
+            b.style.width = size;
+            b.style.height = size;
+            b.style.left = Math.random() * 100 + 'vw';
+            b.style.animationDuration = Math.random() * 10 + 5 + 's';
+            bubbleContainer.appendChild(b);
+            setTimeout(() => b.remove(), 15000);
+        }
+        setInterval(createBubble, 1000);
+
+        // Simple Water Ripple Effect Simulation
+        const canvas = document.getElementById('canvas-ripple');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let ripples = [];
+
+        class Ripple {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.radius = 0;
+                this.opacity = 1;
+            }
+            update() {
+                this.radius += 2;
+                this.opacity -= 0.02;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.stroke();
+            }
+        }
+
+        window.addEventListener('click', (e) => {
+            ripples.push(new Ripple(e.clientX, e.clientY));
+        });
+
+        function animateRipples() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ripples.forEach((r, i) => {
+                r.update();
+                r.draw();
+                if (r.opacity <= 0) ripples.splice(i, 1);
+            });
+            requestAnimationFrame(animateRipples);
+        }
+        animateRipples();
+    </script>
 </body>
 </html>
