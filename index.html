@@ -1,705 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZIVO | The Elite Social Networking Experience 2026</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zivo App</title>
 
-    <style>
-        :root {
-            --primary-gold: #D4AF37; /* Royal Gold */
-            --light-gold: #F3E5AB;
-            --dark-gold: #996515;
-            --bg-night: #050505;
-            --glass-card: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(212, 175, 55, 0.15);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-        /* Basic Resets & Aesthetics */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Custom interaction cursor activated */
-            user-select: none; /* Prevents text drag breaks on touch */
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#1a1a2e,#16213e);
+color:white;
+overflow-x:hidden;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-night);
-            color: #ffffff;
-            overflow-x: hidden;
-            animation: backgroundHueCycle 180s linear infinite; /* Dynamic 3-minute cycle */
-        }
+/* BUBBLES */
+.bubbles span{
+position:absolute;
+bottom:-100px;
+width:20px;
+height:20px;
+background:rgba(0,255,200,0.15);
+border-radius:50%;
+animation:rise 12s infinite;
+}
 
-        @keyframes backgroundHueCycle {
-            0% { background-color: #050505; }
-            33% { background-color: #080312; }
-            66% { background-color: #030a08; }
-            100% { background-color: #050505; }
-        }
+@keyframes rise{
+0%{transform:translateY(0);opacity:0;}
+50%{opacity:0.5;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
 
-        /* --- 5D/6D Water Touch Layer --- */
-        #ripple-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none; /* Allows clicks to bypass layer */
-        }
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+position:fixed;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:10;
+}
 
-        /* --- Atmospheric Up-rising Bubbles --- */
-        .bubble-chamber {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
+.logo{
+font-size:24px;
+font-weight:700;
+color:#00ffc3;
+text-shadow:0 0 15px #00ffc3;
+}
 
-        .ambient-bubble {
-            position: absolute;
-            bottom: -100px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
-            animation: riseDrift 15s infinite ease-in;
-        }
+.btn{
+background:linear-gradient(45deg,#00ffc3,#00bfff);
+color:black;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:600;
+}
 
-        @keyframes riseDrift {
-            0% { transform: translateY(0) scale(0.8); opacity: 0; }
-            30% { opacity: 0.4; }
-            100% { transform: translateY(-120vh) scale(1.6); opacity: 0; }
-        }
+/* HERO */
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:center;
+padding:100px 20px 50px;
+text-align:center;
+}
 
-        /* --- Header Top Marquee (Scroller) --- */
-        .scrolling-header {
-            width: 100%;
-            height: 38px;
-            background: var(--primary-gold);
-            color: #000;
-            font-weight: 800;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            z-index: 10002;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
+.hero-text{
+max-width:500px;
+}
 
-        .marquee-track {
-            display: flex;
-            white-space: nowrap;
-            animation: marqueeStream 35s linear infinite;
-        }
+.hero h1{
+font-size:50px;
+}
 
-        @keyframes marqueeStream {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
+.hero img{
+width:280px;
+border-radius:20px;
+margin:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
 
-        /* --- Master Navigation (Glassmorphic) --- */
-        header {
-            position: fixed;
-            top: 38px;
-            width: 100%;
-            height: 90px;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(25px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 80px;
-            z-index: 10001;
-            border-bottom: 1px solid var(--glass-border);
-        }
+/* PAPER STYLE CARD */
+.card{
+background:white;
+color:black;
+border-radius:15px;
+padding:20px;
+margin:10px;
+width:250px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+border:2px solid #e0e0e0;
+transition:0.3s;
+}
 
-        .brand-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 38px;
-            font-weight: 700;
-            color: var(--primary-gold);
-            text-decoration: none;
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+.card:hover{
+transform:translateY(-8px);
+}
 
-        .brand-logo:hover {
-            transform: scale(1.08);
-            filter: brightness(1.2);
-        }
+/* SECTIONS */
+.section{
+padding:60px 20px;
+text-align:center;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            position: relative;
-        }
+/* IMAGES */
+.people{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
 
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
+.people img{
+width:220px;
+border-radius:20px;
+margin:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--primary-gold);
-            transition: 0.3s ease;
-        }
+/* TRUST BOX */
+.trust{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+max-width:600px;
+margin:auto;
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+/* FOOTER */
+footer{
+background:black;
+padding:30px;
+text-align:center;
+}
 
-        .btn-apk-header {
-            background: var(--primary-gold);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s ease;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
+a{
+color:#00ffc3;
+text-decoration:none;
+}
 
-        .btn-apk-header:hover {
-            transform: translateY(-2px);
-            background: #ffffff;
-            box-shadow: 0 0 25px #ffffff;
-        }
+/* MOBILE */
+@media(max-width:768px){
+.hero{
+flex-direction:column;
+}
+.hero img{
+width:90%;
+}
+.card{
+width:90%;
+}
+}
 
-        /* --- Hero Chamber --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 50px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 1000px;
-        }
-
-        /* 6D Cinematic Shimmer Title */
-        .mega-zivo-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(60px, 10vw, 120px);
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 8px;
-            background: linear-gradient(to right, #ffffff 20%, var(--primary-gold) 50%, #ffffff 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textSweep 6s linear infinite;
-            position: relative;
-        }
-
-        @keyframes textSweep {
-            to { background-position: 200% center; }
-        }
-
-        .hero-content p {
-            font-size: clamp(18px, 2vw, 22px);
-            color: #dcdcdc;
-            margin-bottom: 50px;
-            line-height: 1.6;
-            font-weight: 300;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Soft Glow App Store Buttons */
-        .dual-cta-wrap {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .badge-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: #000000;
-            border: 2px solid var(--primary-gold);
-            padding: 15px 35px;
-            border-radius: 18px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .badge-link:hover {
-            background: var(--primary-gold);
-            color: #000000;
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
-        }
-
-        .badge-link svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
-        }
-
-        /* --- Feature Quadrant (4 Cards) --- */
-        .features-chamber {
-            padding: 150px 50px;
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .grid-quad {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .glass-vault-card {
-            background: var(--glass-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 25px;
-            padding: 50px 30px;
-            text-align: center;
-            transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-vault-card:hover {
-            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
-            border-color: var(--primary-gold);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15);
-            background: rgba(212, 175, 55, 0.02);
-        }
-
-        .glass-vault-card .vault-icon {
-            font-size: 45px;
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        .glass-vault-card h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-gold);
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .glass-vault-card p {
-            color: #b0b0b0;
-            line-height: 1.7;
-            font-size: 15px;
-        }
-
-        /* --- Visual Previews --- */
-        .scenery-segment {
-            padding: 150px 50px;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .scroll-caravan {
-            display: flex;
-            gap: 35px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 70px;
-        }
-
-        .royal-portrait {
-            width: 320px;
-            height: 480px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .royal-portrait:hover {
-            transform: scale(1.05) translateY(-10px);
-            border-color: var(--primary-gold);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.2);
-        }
-
-        .royal-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(30%) brightness(0.8);
-            transition: 0.5s;
-        }
-
-        .royal-portrait:hover img {
-            filter: grayscale(0%) brightness(1);
-        }
-
-        .portrait-curtain {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 40px 25px;
-            background: linear-gradient(transparent, #050505);
-            text-align: left;
-        }
-
-        .portrait-curtain h4 {
-            color: var(--primary-gold);
-            font-family: 'Cinzel', serif;
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        /* --- Trust, Policy & Compliance Section --- */
-        .trust-jurisdiction {
-            padding: 150px 80px;
-            background: rgba(212, 175, 55, 0.02);
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .shield-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .shield-card {
-            padding: 40px;
-            background: var(--glass-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            text-align: left;
-        }
-
-        .shield-card h4 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-gold);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .shield-card p {
-            color: #a0a0a0;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        /* --- Persistent Interaction Core --- */
-        #site-beacon {
-            position: fixed;
-            width: 15px;
-            height: 15px;
-            background: var(--primary-gold);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            box-shadow: 0 0 15px var(--primary-gold);
-            transform: translate(-50%, -50%);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 120px 80px;
-            background: #000000;
-            border-top: 1px solid var(--glass-border);
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .footer-brand {
-            font-family: 'Cinzel', serif;
-            font-size: 42px;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            letter-spacing: 4px;
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .footer-nav a {
-            color: #707070;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .footer-nav a:hover {
-            color: var(--primary-gold);
-        }
-
-        /* Responsive Breakdowns */
-        @media (max-width: 900px) {
-            header { padding: 0 30px; }
-            .nav-links { display: none; } /* On mobile, CTA button remains in view, hamburger not needed for landing */
-            .hero-content h1 { font-size: 55px; }
-            .scenery-segment, .features-chamber, .trust-jurisdiction { padding: 100px 30px; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <div id="site-beacon"></div>
-    <canvas id="ripple-canvas"></canvas>
-    <div class="bubble-chamber" id="chamber-lift"></div>
+<!-- BUBBLES -->
+<div class="bubbles">
+<span style="left:10%"></span>
+<span style="left:30%"></span>
+<span style="left:60%"></span>
+<span style="left:80%"></span>
+</div>
 
-    <div class="scrolling-header">
-        <div class="marquee-track">
-            ✦ Bank-Grade Interaction Security Active ✦ 500,000+ Verified Network Entities Joined ✦ Seamless End-to-End Environment Encryptions Processed ✦ Precision Ecosystem 2026 ✦ 
-        </div>
-    </div>
+<!-- HEADER -->
+<header>
+<div class="logo">ZIVO</div>
+<a href="#download"><button class="btn">Download</button></a>
+</header>
 
-    <header>
-        <a href="#" class="brand-logo">ZIVO</a>
-        <div class="nav-links">
-            <a href="#about">Environment</a>
-            <a href="#features">Directives</a>
-            <a href="#compliance">Jurisdiction</a>
-            <a href="#download">Portal</a>
-        </div>
-        <a href="https://www.zivoapp.in/app.apk">
-            <button class="btn-apk-header">Download APK</button>
-        </a>
-    </header>
+<!-- HERO -->
+<section class="hero">
 
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <h1 class="mega-zivo-title">ZIVO</h1>
-            <p>Step into the domain of high-fidelity social exchange. Discover authenticated connections, curated architectural tribes, and secure vault-grade interactions.</p>
-            
-            <div class="dual-cta-wrap" id="download">
-                <a href="#" class="badge-link">
-                    <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-127.3-60.1-60.1L47 499z"/></svg>
-                    <div><small style="font-size: 11px; color:#aaa;">GET IT ON</small><br>Google Play</div>
-                </a>
-                <a href="#" class="badge-link">
-                    <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                    <div><small style="font-size: 11px; color:#aaa;">DOWNLOAD ON THE</small><br>App Store</div>
-                </a>
-            </div>
-        </div>
-    </section>
+<div class="hero-text">
+<h1>ZIVO</h1>
+<p>Connect • Communicate • Earn</p>
 
-    <section class="features-chamber" id="features">
-        <h2 class="section-title" style="font-family:'Cinzel'; color:#fff;">Ecosystem Infrastructure</h2>
-        
-        <div class="grid-quad">
-            <div class="glass-vault-card">
-                <span class="vault-icon">🌐</span>
-                <h3>Real Authentication</h3>
-                <p>Every account passes rigorous neural-validation checkpoints. Enjoy an environment free from bots or simulated entities.</p>
-            </div>
-            <div class="glass-vault-card">
-                <span class="vault-icon">🎭</span>
-                <h3>Curated Social Tribes</h3>
-                <p>Zivo utilizes micro-interests to filter your networking parameters. Find the exact group you align with instantly.</p>
-            </div>
-            <div class="glass-vault-card">
-                <span class="vault-icon">🛰️</span>
-                <h3>6D Fluid Live Stream</h3>
-                <p>Connect over zero-lag, ultra-definition optics with spatial-audio relays for lifelike encounters.</p>
-            </div>
-            <div class="glass-vault-card">
-                <span class="vault-icon">🏺</span>
-                <h3>Dynamic Asset Trading</h3>
-                <p>Accumulate native social units through engagement and trade them seamlessly in the secure internal economy.</p>
-            </div>
-        </div>
-    </section>
+<p>
+Zivo is a secure social networking platform where users can connect through
+real-time audio and video communication. Enjoy meaningful conversations,
+virtual rewards, and a trusted environment.
+</p>
 
-    <section class="scenery-segment">
-        <h2 class="section-title" style="font-family:'Cinzel'; color:#fff;">Curated Authenticity</h2>
-        <div class="scroll-caravan">
-            <div class="royal-portrait">
-                <img src="https://images.pexels.com/photos/157675/fashion-men-s-fashion-man-portrait-157675.jpeg?auto=compress&cs=tinysrgb&w=800">
-                <div class="portrait-curtain">
-                    <h4>Alexander, 28</h4>
-                    <p style="color:#bbb; font-size:14px;">Senior UX Architect</p>
-                </div>
-            </div>
-            <div class="royal-portrait">
-                <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800">
-                <div class="portrait-curtain">
-                    <h4>Sophia, 26</h4>
-                    <p style="color:#bbb; font-size:14px;">Fashion Directing Lead</p>
-                </div>
-            </div>
-            <div class="royal-portrait">
-                <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800">
-                <div class="portrait-curtain">
-                    <h4>Julian, 31</h4>
-                    <p style="color:#bbb; font-size:14px;">Commodity Trader</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<a href="https://www.zivoapp.in/app.apk">
+<button class="btn">Download APK</button>
+</a>
+</div>
 
-    <section class="trust-jurisdiction" id="compliance">
-        <h2 class="section-title" style="font-family:'Cinzel'; color:#fff;">Compliance Sovereignty</h2>
-        <p style="color:#b0b0b0; max-width: 800px; margin: 0 auto; line-height:1.7;">Our metrics set global bars for system operations, safeguarding fiscal elements and data ownership.</p>
-        
-        <div class="shield-grid">
-            <div class="shield-card">
-                <h4>Dynamic Sharding Privacy</h4>
-                <p>Personal variables are split into unidentifiable nodes across our servers. Full ownership remains locally held by the user node.</p>
-            </div>
-            <div class="shield-card">
-                <h4>Safe Gateway Settlement</h4>
-                <p>Financial transaction hubs utilize non-custodial, peer-vault relays. Real-time settlement guarantees rapid transaction clearings.</p>
-            </div>
-            <div class="shield-card">
-                <h4>System Equilibrium Laws</h4>
-                <p>Zivo remains strictly operational beneath global communications laws. No third-party data extraction is permitted.</p>
-            </div>
-        </div>
-    </section>
+<img src="https://images.pexels.com/photos/3783094/pexels-photo-3783094.jpeg">
 
-    <footer>
-        <div class="footer-brand">ZIVO</div>
-        <p style="color:#aaa; max-width: 700px; margin: 0 auto 50px auto; line-height:1.7; font-size:15px;">We build systems for those who view connectivity as an asset. Authentic, secure, and future-forward. Running operation cycle 2026.</p>
-        
-        <div class="footer-nav">
-            <a href="#">Privacy Mandates</a>
-            <a href="#">Terms of System Usage</a>
-            <a href="#">Security Matrix</a>
-            <a href="#">Ecosystem Patch Logs</a>
-        </div>
+</section>
 
-        <p style="color:#4a4a4a; font-size:13px;">© 2026 ZivoApp Inc. Global Node Deployment. All Rights Reserved.</p>
-    </footer>
+<!-- FEATURES -->
+<section class="section">
+<h2>Features</h2>
 
-    <script>
-        // Smooth Cursor Follower Tracking
-        const beacon = document.getElementById('site-beacon');
-        document.addEventListener('mousemove', (e) => {
-            beacon.style.left = `${e.clientX}px`;
-            beacon.style.top = `${e.clientY}px`;
-        });
+<div class="cards">
+<div class="card">📞 Live Audio & Video Calls</div>
+<div class="card">💰 Earn Rewards & Coins</div>
+<div class="card">🔍 Find and Connect Friends</div>
+<div class="card">🔐 Secure & Verified Platform</div>
+</div>
 
-        // Background Physics Module: Rising Micro-bubbles
-        const chamber = document.getElementById('chamber-lift');
-        function populateAtmosphere() {
-            const span = document.createElement('div');
-            span.className = 'ambient-bubble';
-            const size = Math.random() * 50 + 10 + 'px';
-            span.style.width = size;
-            span.style.height = size;
-            span.style.left = `${Math.random() * 100}vw`;
-            span.style.animationDuration = `${Math.random() * 8 + 7}s`;
-            chamber.appendChild(span);
+</section>
 
-            setTimeout(() => {
-                span.remove();
-            }, 15000);
-        }
-        setInterval(populateAtmosphere, 800);
+<!-- PEOPLE -->
+<section class="section">
+<h2>Connect with Real People</h2>
 
-        // 6D Liquid Ripple Dynamic Handler
-        const canvas = document.getElementById('ripple-canvas');
-        const ctx = canvas.getContext('2d');
+<div class="people">
+<img src="https://images.pexels.com/photos/3752844/pexels-photo-3752844.jpeg">
+<img src="https://images.pexels.com/photos/3808175/pexels-photo-3808175.jpeg">
+<img src="https://images.pexels.com/photos/4008461/pexels-photo-4008461.jpeg">
+</div>
 
-        function resizeChassis() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeChassis);
-        resizeChassis();
+</section>
 
-        let energySpikes = [];
+<!-- TRUST -->
+<section class="section">
+<h2>Safe & Secure</h2>
 
-        class LiquidRipple {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.expansion = 0;
-                this.albedo = 1;
-            }
-            propagate() {
-                this.expansion += 2.5;
-                this.albedo -= 0.015;
-            }
-            render() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.expansion, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(212, 175, 55, ${this.albedo})`;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
-        }
+<div class="trust">
+<p>
+Zivo ensures user privacy and secure transactions using trusted payment systems.
+All payments are processed through reliable gateways and user data is protected.
+We follow industry standards to provide a safe and trusted experience.
+</p>
+</div>
 
-        window.addEventListener('click', (e) => {
-            energySpikes.push(new LiquidRipple(e.clientX, e.clientY));
-        });
+</section>
 
-        function cinematicFrame() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = energySpikes.length - 1; i >= 0; i--) {
-                energySpikes[i].propagate();
-                energySpikes[i].render();
-                if (energySpikes[i].albedo <= 0) {
-                    energySpikes.splice(i, 1);
-                }
-            }
-            requestAnimationFrame(cinematicFrame);
-        }
-        cinematicFrame();
-    </script>
+<!-- DOWNLOAD -->
+<section class="section" id="download">
+<h2>Start Now</h2>
+
+<a href="https://www.zivoapp.in/app.apk">
+<button class="btn">Download APK</button>
+</a>
+
+<p>Safe • Secure • Trusted Platform</p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<p>© 2026 ZivoApp</p>
+
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms</a> |
+<a href="contact.html">Contact</a>
+
+</footer>
 
 </body>
 </html>
