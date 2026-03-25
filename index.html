@@ -1,51 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Zivo App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zivo | Connect & Earn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffcc;
+            --secondary: #00ccff;
+            --bg-dark: #080a0f;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: linear-gradient(135deg, #0f2027, #2c5364);
-      color: white;
-      text-align: center;
-    }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 204, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 204, 255, 0.05) 0%, transparent 40%);
+            color: white;
+            overflow-x: hidden;
+        }
 
-    .container {
-      padding: 40px 20px;
-    }
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-    h1 {
-      font-size: 40px;
-    }
+        .hero h1 {
+            font-size: clamp(60px, 10vw, 100px);
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+            font-weight: 800;
+        }
 
-    .btn {
-      margin-top: 30px;
-      padding: 15px 25px;
-      font-size: 18px;
-      background: #00ffcc;
-      color: black;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-  </style>
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* --- THE $10,000 GLOW BUTTON --- */
+        .btn-glow {
+            position: relative;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+        }
+
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            left: -150%;
+        }
+
+        .btn-glow:hover::after {
+            left: 150%;
+        }
+
+        /* --- SCREENSHOT SCROLLER --- */
+        .screenshots-container {
+            padding: 80px 0;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .scroll-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+
+        .scroll-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+        .screenshot-card {
+            flex: 0 0 280px;
+            height: 500px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            scroll-snap-align: center;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- FEATURES --- */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        /* --- TRUST & PAYMENT --- */
+        .security-hub {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(transparent, rgba(0, 255, 204, 0.03));
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .badge-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        footer {
+            padding: 60px 20px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-  <h1>ZIVO</h1>
-  <p>Talk • Connect • Earn</p>
+    <section class="hero">
+        <h1>ZIVO</h1>
+        <p>The next generation of social connection. Engage in premium audio & video experiences while earning instant rewards.</p>
+        <a href="https://www.zivoapp.in/app.apk" class="btn-glow">Download App Now</a>
+    </section>
 
-  <a href="#">
-    <button class="btn">Download APK</button>
-  </a>
+    <section class="screenshots-container">
+        <h2 class="section-title">Experience the Interface</h2>
+        <div class="scroll-wrapper">
+            <div class="screenshot-card"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=300&q=80" alt="Discovery"></div>
+            <div class="screenshot-card"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=300&q=80" alt="Video Call"></div>
+            <div class="screenshot-card"><img src="https://images.unsplash.com/photo-1556656793-062ff9878273?auto=format&fit=crop&w=300&q=80" alt="Chat UI"></div>
+            <div class="screenshot-card"><img src="https://images.unsplash.com/photo-1614680376593-902f74cc0d41?auto=format&fit=crop&w=300&q=80" alt="Earnings"></div>
+            <div class="screenshot-card"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80" alt="Profile"></div>
+        </div>
+    </section>
 
-  <p>© 2026 ZivoApp</p>
+    <section style="padding: 100px 0;">
+        <h2 class="section-title">Why Professionals Choose Zivo</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>⚡ Instant Rewards</h3>
+                <p>Earn coins in real-time for every interaction. Cash out securely and instantly.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎥 4K Video Streaming</h3>
+                <p>Ultra-low latency audio and video calls designed for seamless connections.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🛡️ Privacy First</h3>
+                <p>End-to-end encrypted chats and automated moderation for a safe environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="security-hub">
+        <h2 class="section-title">Safe, Secure & Trusted</h2>
+        <p style="max-width: 700px; margin: 0 auto; opacity: 0.8;">
+            We utilize military-grade encryption and a multi-layered security protocol to ensure your data and earnings are always protected.
+        </p>
+        
+        <div class="trust-badges">
+            <div class="badge">
+                <div class="badge-icon">🔒</div>
+                <span>SSL Encrypted</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">💳</div>
+                <span>Secure Payouts</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">👤</div>
+                <span>Verified Users</span>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">🛡️</div>
+                <span>24/7 Monitoring</span>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 100px 20px; text-align: center;">
+        <h2>Ready to Join?</h2>
+        <br>
+        <a href="https://www.zivoapp.in/app.apk" class="btn-glow">Get Started for Free</a>
+    </section>
+
+    <footer>
+        <p style="font-weight: 600; font-size: 20px; color: white; margin-bottom: 20px;">ZIVO</p>
+        <p>© 2026 ZivoApp. All rights reserved.</p>
+        <p>Contact: <a href="mailto:support@zivoapp.in">support@zivoapp.in</a></p>
+        <div style="margin-top: 20px;">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/help">Help Center</a>
+        </div>
+    </footer>
+
+</body>
+</html>
 </div>
 
 </body>
