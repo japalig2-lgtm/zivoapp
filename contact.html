@@ -3,29 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Zivo</title>
+<title>Contact Us - Zivo</title>
 
 <style>
 body{
-font-family:Arial;
+font-family:'Arial', sans-serif;
 background:#0f2027;
 color:white;
-padding:20px;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:500px;
+margin:80px auto;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 text-align:center;
 }
-h1{color:#00ffc3;}
+
+h1{
+color:#00ffc3;
+margin-bottom:10px;
+}
+
+p{
+opacity:0.8;
+margin-bottom:25px;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+outline:none;
+font-size:14px;
+}
+
+textarea{
+resize:none;
+height:100px;
+}
+
+button{
+background:#00ffc3;
+color:black;
+padding:12px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+width:100%;
+font-weight:bold;
+font-size:15px;
+transition:0.3s;
+}
+
+button:hover{
+background:#00bfa5;
+}
+
+.footer{
+margin-top:20px;
+font-size:13px;
+opacity:0.7;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>Contact Us</h1>
 
-<p>If you need help, contact us anytime.</p>
+<p>Have questions or need help? Send us a message.</p>
 
+<form action="https://formsubmit.co/support@zivoapp.in" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<div class="footer">
 <p>Email: support@zivoapp.in</p>
-
 <p>Response time: 24-48 hours</p>
+</div>
+
+</div>
 
 </body>
 </html>
