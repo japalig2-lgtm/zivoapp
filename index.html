@@ -3,635 +3,603 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ZivoApp is a social networking and communication platform for posts, Moments, real-time audio and video calls, and online social interaction worldwide.">
-<meta name="theme-color" content="#080711">
-<title>ZivoApp | Connect, Share & Communicate Worldwide</title>
-
+<meta name="description" content="ZivoApp is a global digital social networking and communication platform for Posts, Moments, HD audio calls and HD video calls.">
+<meta name="theme-color" content="#060717">
+<title>ZivoApp — Connect With People Worldwide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --pink:#ff2f9f;
-  --pink2:#ff67bd;
-  --purple:#7b4dff;
-  --cyan:#27dff5;
-  --gold:#ffd166;
-  --green:#39e89b;
-  --bg:#06060d;
-  --bg2:#0d0b18;
-  --text:#fff;
-  --muted:#aaa9bd;
-  --glass:rgba(255,255,255,.055);
-  --glass2:rgba(255,255,255,.09);
-  --border:rgba(255,255,255,.12);
-  --shadow:0 28px 80px rgba(0,0,0,.42);
+  --bg:#050616; --bg2:#080a22; --panel:rgba(12,15,45,.72);
+  --white:#fff; --muted:#aeb2cf; --pink:#ff39b7; --violet:#7b55ff;
+  --blue:#39bfff; --cyan:#35f1ff; --green:#43e89a; --gold:#ffc84d;
+  --line:rgba(255,255,255,.13); --shadow:0 35px 100px rgba(0,0,0,.48);
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:Inter,Poppins,sans-serif;color:var(--text);
+  font-family:Inter,Poppins,sans-serif;color:var(--white);overflow-x:hidden;
   background:
-    radial-gradient(circle at 12% 10%,rgba(255,47,159,.15),transparent 27%),
-    radial-gradient(circle at 88% 18%,rgba(123,77,255,.16),transparent 28%),
-    radial-gradient(circle at 55% 90%,rgba(39,223,245,.10),transparent 30%),
-    linear-gradient(135deg,#04040a,#0a0915 52%,#05050b);
-  overflow-x:hidden;line-height:1.65;
+    radial-gradient(650px 450px at 12% 7%,rgba(255,57,183,.20),transparent 68%),
+    radial-gradient(700px 500px at 88% 12%,rgba(57,191,255,.18),transparent 70%),
+    radial-gradient(650px 500px at 50% 76%,rgba(123,85,255,.14),transparent 70%),
+    linear-gradient(135deg,#03040e,#090a20 48%,#040514);
 }
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-5;opacity:.14;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:65px 65px;
+  content:"";position:fixed;inset:0;z-index:-6;pointer-events:none;opacity:.20;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:72px 72px;
 }
-a{text-decoration:none;color:inherit}
-.container{width:min(1180px,92%);margin:auto}
-
-.top-strip{
-  padding:9px 14px;text-align:center;font-size:11px;font-weight:700;
-  color:#fff;background:linear-gradient(90deg,#ff2f9f,#7b4dff,#27dff5,#ff2f9f);
-  background-size:300% 100%;animation:gradient 9s linear infinite;
-  position:relative;z-index:1001;
+body:after{
+  content:"";position:fixed;inset:0;z-index:-5;pointer-events:none;
+  background:radial-gradient(circle at center,transparent 25%,rgba(0,0,0,.30) 100%);
 }
-@keyframes gradient{to{background-position:300% 0}}
-
-header{
-  position:fixed;top:34px;left:0;width:100%;z-index:1000;
-  padding:15px 4%;transition:.35s;
+a{color:inherit;text-decoration:none}
+.container{width:min(1220px,92%);margin:auto}
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:16px 4%;background:rgba(4,5,18,.58);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08)
 }
-header.scrolled{
-  top:0;background:rgba(6,6,13,.76);backdrop-filter:blur(22px);
-  border-bottom:1px solid var(--border);
+.nav{max-width:1220px;margin:auto;display:flex;align-items:center;gap:26px}
+.brand{font-size:28px;font-weight:900;letter-spacing:-1.8px;display:flex;align-items:center;gap:8px}
+.brand-mark{
+  width:30px;height:30px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--violet),var(--cyan));
+  box-shadow:0 0 28px rgba(255,57,183,.35);font-size:17px
 }
-.nav{width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between}
-.logo{
-  font-size:28px;font-weight:900;letter-spacing:4px;
-  background:linear-gradient(90deg,#fff,var(--pink2),var(--cyan));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.nav-links{display:flex;gap:5px;align-items:center}
-.nav-links a{padding:9px 13px;border-radius:22px;color:#d7d6e2;font-size:12px;font-weight:700;transition:.25s}
-.nav-links a:hover{background:var(--glass2);color:#fff}
-.nav-btn{
-  padding:11px 18px;border-radius:30px;
-  background:linear-gradient(110deg,var(--pink),var(--purple));
-  font-size:11px;font-weight:900;box-shadow:0 12px 30px rgba(255,47,159,.2)
+.navlinks{margin-left:auto;display:flex;gap:8px}
+.navlinks a{padding:9px 13px;border-radius:22px;color:#c8cbe0;font-size:12px;font-weight:800}
+.navlinks a:hover{background:rgba(255,255,255,.08);color:#fff}
+.navcta{
+  padding:11px 18px;border-radius:28px;font-size:12px;font-weight:900;
+  background:linear-gradient(100deg,var(--pink),var(--violet),var(--cyan));
+  box-shadow:0 12px 35px rgba(255,57,183,.22)
 }
 
-.hero{
-  min-height:100vh;padding:150px 0 90px;display:flex;align-items:center;
-  position:relative;overflow:hidden;
-}
-.hero:before,.hero:after{
-  content:"";position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;
-}
-.hero:before{width:430px;height:430px;left:-170px;top:25%;background:rgba(255,47,159,.14);animation:orb 9s ease-in-out infinite alternate}
-.hero:after{width:400px;height:400px;right:-140px;bottom:-80px;background:rgba(39,223,245,.11);animation:orb 11s ease-in-out infinite alternate-reverse}
-@keyframes orb{to{transform:translate(55px,-35px) scale(1.12)}}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero{min-height:100vh;padding:135px 0 75px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}
 .eyebrow{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--border);
-  background:var(--glass);border-radius:30px;font-size:11px;font-weight:800;margin-bottom:20px
+  display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:30px;
+  border:1px solid var(--line);background:rgba(255,255,255,.055);font-size:10px;font-weight:900;
+  letter-spacing:1.4px;margin-bottom:19px
 }
-.live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);animation:pulse 1.5s infinite}
-@keyframes pulse{50%{transform:scale(1.7);opacity:.45}}
+.live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.7);opacity:.35}}
 .hero h1{
-  font-size:clamp(65px,9vw,108px);line-height:.85;letter-spacing:-5px;margin-bottom:22px;font-weight:900;
-  background:linear-gradient(120deg,#fff 15%,#fff 38%,var(--pink2) 58%,#9c7cff 78%,var(--cyan));
-  background-size:240%;-webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:titleFlow 7s ease-in-out infinite;
+  font-size:clamp(70px,9.5vw,128px);line-height:.80;letter-spacing:-7px;font-weight:900;
+  margin-bottom:25px;background:linear-gradient(115deg,#ff59c4 4%,#ff7bcf 25%,#fff 43%,#73d9ff 72%,#52e7ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 20px 50px rgba(255,57,183,.20));animation:shine 7s ease-in-out infinite
 }
-@keyframes titleFlow{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
-.tagline{color:var(--pink2);font-size:14px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
-.hero-desc{max-width:650px;color:#b8b7c8;font-size:17px;margin-bottom:23px}
-.owner-line{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:27px}
-.owner-chip{padding:8px 12px;border-radius:13px;background:var(--glass);border:1px solid var(--border);font-size:11px;font-weight:700}
-.owner-chip span{color:var(--pink2)}
-.actions{display:flex;flex-wrap:wrap;gap:11px}
+@keyframes shine{50%{filter:drop-shadow(0 22px 65px rgba(57,191,255,.25))}}
+.hero h2{font-size:clamp(37px,5vw,66px);line-height:.98;letter-spacing:-3px;max-width:700px;margin-bottom:18px}
+.hero h2 span{color:var(--pink)}
+.hero-copy{max-width:680px;color:#c0c4dc;font-size:16px;line-height:1.75;margin-bottom:22px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:25px}
+.chip{
+  padding:10px 13px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.055);
+  font-size:11px;font-weight:900;box-shadow:inset 0 1px rgba(255,255,255,.10),0 12px 30px rgba(0,0,0,.18)
+}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:15px;
-  background:linear-gradient(110deg,var(--pink),var(--purple),var(--cyan));
-  background-size:220%;color:#fff;font-weight:900;font-size:12px;border:0;
-  box-shadow:0 15px 40px rgba(255,47,159,.18);transition:.3s;
+  display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:16px;
+  font-size:12px;font-weight:900;background:linear-gradient(105deg,var(--pink),var(--violet),var(--cyan));
+  box-shadow:0 18px 50px rgba(255,57,183,.20);transition:.3s;position:relative;overflow:hidden
 }
-.btn:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(255,47,159,.28)}
-.btn.secondary{background:var(--glass);border:1px solid var(--border);box-shadow:none}
+.btn:hover{transform:translateY(-4px) scale(1.01)}
+.btn.secondary{background:rgba(255,255,255,.055);border:1px solid var(--line);box-shadow:none}
+.btn:after{
+  content:"";position:absolute;width:35%;height:180%;left:-70%;top:-40%;transform:rotate(20deg);
+  background:rgba(255,255,255,.28);transition:.65s
+}
+.btn:hover:after{left:130%}
 
-.hero-visual{min-height:550px;display:flex;align-items:center;justify-content:center;position:relative}
-.phone-glow{position:absolute;width:370px;height:500px;border-radius:50%;background:conic-gradient(rgba(255,47,159,.2),rgba(123,77,255,.22),rgba(39,223,245,.18),rgba(255,47,159,.2));filter:blur(55px);animation:spin 14s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+.hero-art{height:610px;position:relative;display:flex;align-items:center;justify-content:center;perspective:1200px}
+.glow{
+  position:absolute;width:480px;height:480px;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(255,57,183,.28),rgba(123,85,255,.26),rgba(53,241,255,.23),rgba(255,57,183,.28));
+  filter:blur(60px);animation:rotateGlow 14s linear infinite
+}
+@keyframes rotateGlow{to{transform:rotate(360deg)}}
 .phone{
-  width:min(325px,72vw);padding:9px;border-radius:38px;
-  background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(255,255,255,.04));
-  border:1px solid rgba(255,255,255,.22);box-shadow:var(--shadow);
-  transform:rotateY(-7deg);animation:float 6s ease-in-out infinite;position:relative
+  position:absolute;width:230px;padding:7px;border-radius:36px;
+  background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.055));
+  border:1px solid rgba(255,255,255,.24);box-shadow:0 45px 100px rgba(0,0,0,.60),inset 0 1px rgba(255,255,255,.35);
+  transform-style:preserve-3d;animation:phoneFloat 6s ease-in-out infinite
 }
-@keyframes float{0%,100%{transform:translateY(0) rotateY(-7deg)}50%{transform:translateY(-15px) rotateY(5deg)}}
-.phone img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:30px}
-.float-card{
-  position:absolute;padding:12px 15px;border-radius:17px;background:rgba(8,8,18,.76);
-  border:1px solid var(--border);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);
-  font-size:11px;font-weight:800;animation:floatCard 5s ease-in-out infinite
+.phone img{width:100%;height:430px;object-fit:cover;border-radius:29px;display:block}
+.phone.one{left:10%;transform:rotateY(15deg) rotateZ(-7deg);z-index:2}
+.phone.two{right:5%;transform:rotateY(-15deg) rotateZ(7deg);z-index:3;animation-delay:-2.2s}
+.phone:after{
+  content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:72px;height:16px;border-radius:0 0 12px 12px;background:#03040b;z-index:5
 }
-.float-card b{display:block;font-size:17px;color:var(--green)}
-.float-card.one{left:0;top:17%}.float-card.two{right:0;bottom:17%;animation-delay:-2s}
-@keyframes floatCard{50%{transform:translateY(-11px)}}
-
-.section{padding:105px 0;position:relative}
-.section-head{text-align:center;max-width:780px;margin:0 auto 48px}
-.kicker{color:var(--pink2);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px}
-.section h2{font-size:clamp(32px,5vw,51px);line-height:1.06;letter-spacing:-2px;margin-bottom:13px}
-.section-head p{color:var(--muted);font-size:14px}
-.reveal{opacity:0;transform:translateY(26px);transition:.8s ease}
-.reveal.show{opacity:1;transform:none}
-
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.card{
-  min-height:220px;padding:27px;border-radius:25px;border:1px solid var(--border);
-  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
-  backdrop-filter:blur(18px);box-shadow:0 20px 55px rgba(0,0,0,.2);transition:.35s;position:relative;overflow:hidden
+@keyframes phoneFloat{50%{translate:0 -15px}}
+.call-pill,.post-pill{
+  position:absolute;z-index:6;padding:11px 14px;border-radius:17px;background:rgba(7,8,23,.82);
+  border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(16px);font-size:10px;font-weight:900;
+  box-shadow:0 20px 45px rgba(0,0,0,.40);animation:bob 5s ease-in-out infinite
 }
-.card:before{content:"";position:absolute;width:170px;height:170px;right:-70px;top:-70px;border-radius:50%;background:radial-gradient(circle,rgba(255,47,159,.22),transparent 70%)}
-.card:hover{transform:translateY(-9px);border-color:rgba(255,255,255,.25);box-shadow:0 30px 65px rgba(0,0,0,.34)}
-.icon{
-  width:53px;height:53px;display:grid;place-items:center;border-radius:16px;font-size:24px;
-  background:linear-gradient(135deg,rgba(255,47,159,.2),rgba(123,77,255,.2));border:1px solid var(--border);margin-bottom:22px
+.call-pill{left:0;top:24%}.post-pill{right:-2%;bottom:20%;animation-delay:-2s}
+.call-pill b,.post-pill b{display:block;font-size:17px;color:var(--green);margin-bottom:2px}
+@keyframes bob{50%{transform:translateY(-12px) translateZ(30px)}}
+
+.section{padding:92px 0}
+.center{text-align:center;max-width:800px;margin:0 auto 42px}
+.kicker{font-size:10px;letter-spacing:3px;color:var(--pink);font-weight:900;text-transform:uppercase;margin-bottom:10px}
+.section h2{font-size:clamp(33px,5vw,56px);line-height:1.02;letter-spacing:-2.5px;margin-bottom:13px}
+.section p.lead{font-size:14px;color:var(--muted);line-height:1.75}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:24px;
+  overflow:hidden;background:rgba(255,255,255,.045);box-shadow:var(--shadow);margin-top:30px
 }
-.card h3{font-size:17px;margin-bottom:8px}.card p{font-size:12px;color:var(--muted)}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
-.stat{text-align:center;padding:21px;border:1px solid var(--border);border-radius:20px;background:var(--glass)}
-.stat strong{display:block;font-size:32px;font-weight:900;background:linear-gradient(90deg,#fff,var(--pink2),var(--cyan));-webkit-background-clip:text;color:transparent}
-.stat span{font-size:10px;color:#9090a4;text-transform:uppercase;letter-spacing:1.4px}
-
-.glass{
-  padding:50px;border-radius:32px;border:1px solid var(--border);
-  background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
-  backdrop-filter:blur(22px);box-shadow:var(--shadow)
+.stat{padding:22px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat strong{
+  display:block;font-size:30px;font-weight:900;background:linear-gradient(90deg,#fff,var(--pink2),var(--cyan));
+  -webkit-background-clip:text;color:transparent;margin-bottom:3px
 }
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.info{
-  padding:27px;border-radius:23px;background:rgba(255,255,255,.035);border:1px solid var(--border)
+.stat span{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#8e93b0}
+
+.feature-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.feature{
+  min-height:190px;padding:23px;border:1px solid var(--line);border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  box-shadow:0 25px 55px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.09);
+  transition:.35s;position:relative;overflow:hidden
 }
-.info h3{font-size:21px;margin-bottom:9px}.info p{color:#b6b5c7;font-size:13px}
-.list{margin-top:18px;display:grid;gap:0}
-.list div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px}
-.list div:last-child{border:0}.list span:first-child{color:#858599}.list span:last-child{text-align:right;font-weight:800}
-
-.preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.preview{border:1px solid var(--border);border-radius:24px;overflow:hidden;position:relative;background:#111;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.preview img{width:100%;height:430px;display:block;object-fit:cover;transition:.6s}
-.preview:hover img{transform:scale(1.07)}
-.preview:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 48%);pointer-events:none}
-.preview span{position:absolute;left:15px;bottom:14px;z-index:2;font-size:12px;font-weight:900}
-
-.feature-story{
-  display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch
+.feature:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(255,255,255,.25)}
+.feature .ico{font-size:25px;margin-bottom:15px}
+.feature h3{font-size:17px;margin-bottom:7px}
+.feature p{font-size:12px;line-height:1.65;color:#aeb2cf}
+.feature .mini{display:inline-block;margin-top:13px;font-size:9px;color:#78e9ff;font-weight:900;letter-spacing:1px}
+.map-card{
+  border:1px solid rgba(53,241,255,.20);border-radius:24px;padding:24px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(53,241,255,.14),transparent 50%),
+    linear-gradient(145deg,rgba(10,24,51,.88),rgba(10,11,31,.82));
+  box-shadow:0 30px 75px rgba(0,0,0,.38);overflow:hidden;position:relative
 }
-.story-main,.story-side{
-  padding:32px;border-radius:28px;border:1px solid var(--border);
-  background:linear-gradient(145deg,rgba(255,47,159,.08),rgba(123,77,255,.06),rgba(39,223,245,.045))
+.map-card h3{font-size:22px;margin-bottom:6px}.map-card p{font-size:12px;color:#aeb2cf;line-height:1.6}
+.world{width:100%;height:300px;margin-top:10px}
+.map-dot{fill:#49eaff;filter:drop-shadow(0 0 7px #49eaff)}
+.map-node{fill:#ff51bd;filter:drop-shadow(0 0 7px #ff51bd)}
+.route{fill:none;stroke:rgba(53,241,255,.50);stroke-width:1.2;stroke-dasharray:4 6;animation:dash 5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-80}}
+.map-glow{fill:none;stroke:rgba(255,57,183,.16);stroke-width:28;filter:blur(8px)}
+
+.story{
+  border:1px solid var(--line);border-radius:30px;padding:40px;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,57,183,.12),transparent 28%),
+    radial-gradient(circle at 90% 80%,rgba(53,241,255,.09),transparent 30%),
+    rgba(255,255,255,.035);box-shadow:var(--shadow)
 }
-.story-main h3{font-size:30px;line-height:1.1;margin:10px 0 12px}.story-main p,.story-side p{color:#b4b3c5;font-size:14px}
-.story-side{display:grid;gap:14px}
-.story-item{padding:17px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--border)}
-.story-item h4{font-size:15px;margin-bottom:5px}.story-item p{font-size:12px}
+.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.story h3{font-size:clamp(30px,4vw,48px);line-height:1.02;letter-spacing:-2px;margin-bottom:14px}
+.story h3 span{color:var(--pink)}
+.story p{color:#b8bdd4;font-size:14px;line-height:1.8}
+.story-list{display:grid;gap:10px;margin-top:18px}
+.story-item{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035)}
+.story-item b{display:block;font-size:13px;margin-bottom:3px}.story-item span{font-size:11px;color:#9ea3bf}
+.people{
+  display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:18px
+}
+.avatar{
+  width:52px;height:52px;border-radius:50%;border:3px solid #0a0b20;margin-left:-9px;
+  background:linear-gradient(135deg,var(--pink),var(--violet),var(--cyan));display:grid;place-items:center;font-size:18px
+}
+.avatar:first-child{margin-left:0}
+.people-badge{margin-left:16px;font-size:12px;font-weight:900}.people-badge span{display:block;color:#8e93b0;font-weight:500;margin-top:2px}
 
-.business-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
-.business-card{padding:32px;border-radius:28px;border:1px solid var(--border);background:linear-gradient(145deg,rgba(255,47,159,.09),rgba(123,77,255,.07))}
-.badge{display:inline-block;padding:7px 10px;border-radius:20px;color:var(--gold);background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.16);font-size:9px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:15px}
-.business-card h3{font-size:29px;margin-bottom:9px}.business-card>p{color:#b6b5c7;font-size:13px}
-.owner{margin-top:23px;padding-top:17px;border-top:1px solid rgba(255,255,255,.09);display:grid;gap:9px}
-.owner-row{display:flex;justify-content:space-between;gap:18px;font-size:12px}.owner-row span:first-child{color:#858599}.owner-row span:last-child;text-align:right;font-weight:800}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.preview{
+  border:1px solid var(--line);border-radius:24px;padding:10px;background:rgba(255,255,255,.035);
+  box-shadow:0 25px 65px rgba(0,0,0,.34);overflow:hidden
+}
+.preview img{width:100%;height:360px;object-fit:cover;border-radius:17px;display:block;transition:.5s}
+.preview:hover img{transform:scale(1.035)}
+.preview-label{padding:13px 4px 5px;font-size:12px;font-weight:900}
+.preview-label span{display:block;color:#8e93b0;font-size:10px;font-weight:500;margin-top:3px}
 
-.safety{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.safety-item{text-align:center;padding:27px;border-radius:23px;border:1px solid var(--border);background:var(--glass)}
-.safety-item .big{font-size:30px;margin-bottom:9px}.safety-item h3{font-size:16px;margin-bottom:6px}.safety-item p{font-size:12px;color:var(--muted)}
+.three{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.info-card{
+  padding:27px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.045);
+  box-shadow:0 25px 55px rgba(0,0,0,.25)
+}
+.info-card h3{font-size:19px;margin-bottom:8px}.info-card p{font-size:12px;color:#aeb2cf;line-height:1.7}
+.info-card ul{list-style:none;margin-top:15px;display:grid;gap:8px}
+.info-card li{font-size:11px;color:#c4c8dd}.info-card li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
 
-.delete{max-width:900px;margin:auto}.delete ol{margin:16px 0 0 20px;color:#b9b8ca;font-size:13px}.delete li{padding:5px 0}
-.notice{margin-top:20px;padding:13px 15px;border-radius:15px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.16);color:#d8ceb2;font-size:12px}
+.company{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:18px
+}
+.company-card,.company-detail{
+  padding:30px;border:1px solid var(--line);border-radius:27px;
+  background:linear-gradient(145deg,rgba(255,57,183,.08),rgba(123,85,255,.06),rgba(53,241,255,.035))
+}
+.company-card h3{font-size:30px;margin:8px 0}.company-card p,.company-detail p{font-size:13px;color:#aeb2cf;line-height:1.7}
+.details{margin-top:20px;display:grid;gap:10px}
+.details div{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:9px;font-size:11px}
+.details span:first-child{color:#7f849e}.details span:last-child;font-weight:800;text-align:right}
 
 .cta{text-align:center}
-.cta-box{padding:65px 25px;border-radius:35px;border:1px solid var(--border);background:radial-gradient(circle at 20% 30%,rgba(255,47,159,.19),transparent 28%),radial-gradient(circle at 80% 70%,rgba(39,223,245,.14),transparent 28%),rgba(255,255,255,.04)}
-.cta-box p{color:#aaa9bd;max-width:620px;margin:0 auto 25px;font-size:14px}
-
-footer{padding:60px 0 30px;border-top:1px solid var(--border);background:rgba(2,2,7,.72)}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.footer-brand p{color:#858599;font-size:12px;max-width:520px;margin-top:9px}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;align-content:flex-start;gap:7px}
-.footer-links a{padding:7px 10px;border-radius:10px;color:#9998ac;font-size:11px}.footer-links a:hover{background:var(--glass2);color:#fff}
-.copy{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#69697c;font-size:10px}
-
-#particles{position:fixed;inset:0;pointer-events:none;z-index:-3;overflow:hidden}
-.particle{position:absolute;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan));opacity:.3;animation:rise linear infinite}
-@keyframes rise{0%{transform:translateY(20vh) scale(.5);opacity:0}15%{opacity:.35}100%{transform:translate(var(--x),-120vh) scale(1.5);opacity:0}}
-
-@media(max-width:1000px){
-  .hero-grid,.business-grid,.two-col,.feature-story{grid-template-columns:1fr}
-  .hero-text{text-align:center}.hero-desc{margin-left:auto;margin-right:auto}.owner-line,.actions{justify-content:center}
-  .cards,.preview-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
-  .safety{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}
+.cta-box{
+  padding:65px 25px;border:1px solid var(--line);border-radius:34px;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,57,183,.20),transparent 28%),
+    radial-gradient(circle at 80% 70%,rgba(53,241,255,.15),transparent 28%),rgba(255,255,255,.035);
+  box-shadow:var(--shadow)
 }
-@media(max-width:700px){
-  .nav-links{display:none}.hero{padding-top:130px}.hero h1{font-size:70px}
-  .hero-visual{min-height:470px}.float-card.one{left:-5px}.float-card.two{right:-5px}
-  .cards,.preview-grid,.stats{grid-template-columns:1fr}.glass{padding:28px 20px}
-  .preview img{height:390px}.owner-row{display:block}.owner-row span{display:block}.owner-row span:last-child{text-align:left;margin-top:2px}
+.cta-box h2{font-size:clamp(38px,6vw,68px);letter-spacing:-3px}.cta-box h2 span{color:var(--pink)}
+.cta-box p{max-width:650px;margin:12px auto 25px;color:#aeb2cf;font-size:14px;line-height:1.7}
+
+footer{padding:55px 0 28px;border-top:1px solid var(--line);background:rgba(2,3,11,.78)}
+.footer{display:flex;justify-content:space-between;gap:30px}.footer p{color:#7e839e;font-size:11px;max-width:540px;margin-top:8px;line-height:1.7}
+.links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.links a{font-size:10px;color:#8e93aa;padding:7px 9px;border-radius:10px}.links a:hover{background:rgba(255,255,255,.07);color:#fff}
+.copy{margin-top:25px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#646a86;font-size:9px}
+
+.bubbles{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.bubble{
+  position:absolute;border-radius:50%;opacity:.42;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.60),rgba(57,191,255,.18) 25%,rgba(123,85,255,.14) 60%,transparent 72%);
+  border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 20px rgba(255,255,255,.08),0 0 30px rgba(57,191,255,.08);
+  animation:rise linear infinite
 }
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+@keyframes rise{
+  from{transform:translate3d(0,20vh,0) scale(.55);opacity:0}
+  15%{opacity:.42} 100%{transform:translate3d(var(--dx),-125vh,0) scale(1.35);opacity:0}
+}
+.reveal{opacity:0;transform:translateY(25px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:1050px){
+  .hero-grid,.story-grid,.company{grid-template-columns:1fr}
+  .hero-text{text-align:center}.hero-copy{margin-left:auto;margin-right:auto}.chips,.actions{justify-content:center}
+  .hero-art{height:550px}.feature-layout{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+  .navlinks{display:none}.navcta{margin-left:auto}.hero{padding-top:120px}
+  .hero h1{font-size:76px}.hero-art{height:500px}
+  .phone{width:190px}.phone img{height:355px}.phone.one{left:5%}.phone.two{right:3%}
+  .stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .feature-grid,.preview-grid,.three{grid-template-columns:1fr}.story{padding:27px}
+  .footer{display:block}.links{justify-content:flex-start;margin-top:18px}
+}
+@media(max-width:520px){
+  .container{width:min(94%,1220px)}.hero h1{font-size:64px;letter-spacing:-4px}.hero h2{font-size:37px}
+  .hero-art{height:450px}.phone{width:165px}.phone img{height:310px}.call-pill{left:-5px}.post-pill{right:-8px}
+  .stats{grid-template-columns:1fr}.stat{border-right:0!important;border-bottom:1px solid var(--line)!important}.stat:last-child{border-bottom:0!important}
+  .world{height:245px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 
 <body>
-<div id="particles"></div>
+<div class="bubbles" id="bubbles"></div>
 
-<div class="top-strip">
-  ZivoApp – Global Audio & Video Communication Platform 🌍
-  &nbsp;•&nbsp; Owned by CHANDRAKALA ANGOTH
-  &nbsp;•&nbsp; Operated by BHUKYA PAVANKALYAN
-  &nbsp;•&nbsp; Support: zivo.support@gmail.com
-</div>
-
-<header id="header">
+<header class="top">
   <nav class="nav">
-    <a class="logo" href="#">ZIVO</a>
-    <div class="nav-links">
+    <a class="brand" href="#"><span class="brand-mark">♥</span>Zivo</a>
+    <div class="navlinks">
       <a href="#features">Features</a>
-      <a href="#how">How It Works</a>
-      <a href="#preview">App Preview</a>
-      <a href="#business">Business</a>
+      <a href="#network">Global Network</a>
+      <a href="#preview">App</a>
+      <a href="#company">Company</a>
       <a href="#safety">Safety</a>
     </div>
-    <a class="nav-btn" href="#download">GET ZIVO</a>
+    <a class="navcta" href="#download">⇩ Download App</a>
   </nav>
 </header>
 
 <main>
-
 <section class="hero">
   <div class="container hero-grid">
-    <div class="hero-text reveal">
-      <div class="eyebrow"><span class="live"></span> REAL-TIME SOCIAL COMMUNICATION</div>
-      <div class="tagline">Connect • Share • Talk • Discover</div>
-      <h1>ZIVO</h1>
-      <p class="hero-desc">
-        ZivoApp is a social networking and communication platform where users can
-        create profiles, share posts and Moments, discover people, and communicate
-        through real-time audio and video calls.
+    <div class="reveal">
+      <div class="eyebrow"><span class="live"></span> GLOBAL DIGITAL COMMUNICATION NETWORK</div>
+      <h1>Zivo</h1>
+      <h2>Connect With People <span>Worldwide</span></h2>
+      <p class="hero-copy">
+        ZivoApp is a global social networking and digital communication platform where people can
+        share Posts, Moments, discover new people, build friendships, exchange ideas and talk in
+        real time through HD audio and video calls.
       </p>
-      <div class="owner-line">
-        <div class="owner-chip">Owner <span>CHANDRAKALA ANGOTH</span></div>
-        <div class="owner-chip">Operated by <span>BHUKYA PAVANKALYAN</span></div>
+
+      <div class="chips">
+        <div class="chip">📝 Posts</div>
+        <div class="chip">✨ Moments</div>
+        <div class="chip">📞 HD Audio Calls</div>
+        <div class="chip">🎥 HD Video Calls</div>
       </div>
+
       <div class="actions">
-        <a class="btn" href="#download">Get ZivoApp — Google Play Coming Soon</a>
-        <a class="btn secondary" href="#features">Explore Features ↓</a>
+        <a class="btn" href="#download">⇩ Download ZivoApp</a>
+        <a class="btn secondary" href="#features">Explore Zivo ↓</a>
       </div>
     </div>
 
-    <div class="hero-visual reveal">
-      <div class="phone-glow"></div>
-      <div class="float-card one"><b>LIVE</b>Audio + Video Calls</div>
-      <div class="float-card two"><b>POSTS</b>Share & interact</div>
-      <div class="phone">
-        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="ZivoApp Home Screen">
+    <div class="hero-art reveal">
+      <div class="glow"></div>
+      <div class="call-pill"><b>HD LIVE</b>Audio + Video Calls</div>
+      <div class="post-pill"><b>POSTS</b>Share your world</div>
+
+      <div class="phone one">
+        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-callscreen.png.jpeg" alt="ZivoApp HD call screen">
       </div>
+      <div class="phone two">
+        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="ZivoApp home screen">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="network">
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat"><strong>🌍</strong><span>Worldwide Digital Network</span></div>
+      <div class="stat"><strong>HD</strong><span>Audio & Video Calls</span></div>
+      <div class="stat"><strong>24/7</strong><span>Online Communication</span></div>
+      <div class="stat"><strong>1</strong><span>Connected Social Platform</span></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="features">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="kicker">What ZivoApp Offers</div>
-    <h2>One place to connect, share and communicate.</h2>
-    <p>Zivo brings social content and real-time communication features together in one online platform.</p>
-  </div>
-
-  <div class="cards">
-    <article class="card reveal">
-      <div class="icon">📝</div>
-      <h3>Posts</h3>
-      <p>Create and publish posts to share thoughts, updates, interests and experiences with the Zivo community.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">✨</div>
-      <h3>Moments</h3>
-      <p>Use Moments to share updates and experiences and see available social content from other users.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">📞</div>
-      <h3>Audio Calls</h3>
-      <p>Have real-time voice conversations with available users through the audio calling feature.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">🎥</div>
-      <h3>Video Calls</h3>
-      <p>Communicate face-to-face through real-time video and audio calling when the feature is available.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">🌍</div>
-      <h3>Global Connection</h3>
-      <p>Connect online with people from different locations and countries, subject to availability and applicable requirements.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">🔎</div>
-      <h3>Discover People</h3>
-      <p>Explore available profiles and discover people you may want to communicate with through the platform.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">💎</div>
-      <h3>Virtual Coins</h3>
-      <p>Supported in-app interactions may use virtual coins according to ZivoApp's applicable rules and pricing.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">🛡️</div>
-      <h3>Responsible Use</h3>
-      <p>Zivo is intended for responsible online communication and social interaction in accordance with its policies.</p>
-    </article>
-  </div>
-
-  <div class="stats">
-    <div class="stat reveal"><strong>2</strong><span>Live communication modes</span></div>
-    <div class="stat reveal"><strong>24/7</strong><span>Digital access concept</span></div>
-    <div class="stat reveal"><strong>🌍</strong><span>Worldwide platform</span></div>
-    <div class="stat reveal"><strong>1</strong><span>Social communication platform</span></div>
-  </div>
-</div>
-</section>
-
-<section class="section" id="how">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="kicker">How ZivoApp Works</div>
-    <h2>Simple online communication.</h2>
-    <p>Users can choose how they want to participate based on the features available to them.</p>
-  </div>
-
-  <div class="feature-story">
-    <div class="story-main reveal">
-      <div class="kicker">Everyday Communication</div>
-      <h3>Talk naturally. Share what matters. Stay connected.</h3>
-      <p>
-        ZivoApp is designed for people who want to communicate online in a natural way.
-        A user can maintain a profile, discover other users, share posts or Moments,
-        and use supported audio or video calling features for real-time conversations.
-      </p>
+  <div class="container">
+    <div class="center reveal">
+      <div class="kicker">Everything You Need</div>
+      <h2>Everything You Need in <span style="color:var(--pink)">One App</span></h2>
+      <p class="lead">ZivoApp brings social networking, real-time communication and global digital connectivity together in one simple experience.</p>
     </div>
 
-    <div class="story-side reveal">
-      <div class="story-item">
-        <h4>👥 For students and everyday users</h4>
-        <p>Users may use the platform for casual conversations, exchanging ideas, discussing interests, sharing experiences, and staying socially connected online.</p>
+    <div class="feature-layout">
+      <div class="feature-grid">
+        <article class="feature reveal"><div class="ico">📝</div><h3>Posts</h3><p>Share your thoughts, photos, updates, interests and experiences with the community.</p><span class="mini">SHARE YOUR WORLD</span></article>
+        <article class="feature reveal"><div class="ico">⭐</div><h3>Moments</h3><p>Share everyday moments and experiences and discover what other users are sharing.</p><span class="mini">EVERYDAY STORIES</span></article>
+        <article class="feature reveal"><div class="ico">📞</div><h3>HD Audio Calls</h3><p>Have real-time voice conversations with available people around the world.</p><span class="mini">REAL-TIME VOICE</span></article>
+        <article class="feature reveal"><div class="ico">🎥</div><h3>HD Video Calls</h3><p>Talk face-to-face with supported real-time video and audio communication.</p><span class="mini">FACE-TO-FACE</span></article>
+        <article class="feature reveal"><div class="ico">🌐</div><h3>Global Users</h3><p>Connect digitally with people from different locations, countries and cultures.</p><span class="mini">WORLDWIDE CONNECTION</span></article>
+        <article class="feature reveal"><div class="ico">👥</div><h3>Make Friends</h3><p>Discover people, start conversations and build online friendships around shared interests.</p><span class="mini">MEET & CONNECT</span></article>
+        <article class="feature reveal"><div class="ico">📚</div><h3>Study & Discussions</h3><p>Talk about study, ideas, careers, skills and topics you want to learn from others.</p><span class="mini">LEARN TOGETHER</span></article>
+        <article class="feature reveal"><div class="ico">🗺️</div><h3>Culture & Languages</h3><p>Explore different cultures, languages, traditions and perspectives through conversations.</p><span class="mini">EXPLORE THE WORLD</span></article>
       </div>
-      <div class="story-item">
-        <h4>🌐 Across different locations</h4>
-        <p>The platform is intended to support online communication between users from different places and countries, subject to availability and applicable requirements.</p>
-      </div>
-      <div class="story-item">
-        <h4>📱 Digital-first experience</h4>
-        <p>Zivo is an online platform. It does not provide offline services or arrange physical or real-world meetings between users.</p>
-      </div>
+
+      <aside class="map-card reveal">
+        <div class="kicker">Global Network</div>
+        <h3>Connect Across The World</h3>
+        <p>Digital communication can bring people from different places together through conversations, Posts, Moments and calls.</p>
+        <svg class="world" viewBox="0 0 620 300" role="img" aria-label="Stylized global network map">
+          <defs>
+            <linearGradient id="routeG" x1="0" x2="1"><stop stop-color="#ff39b7"/><stop offset=".5" stop-color="#7b55ff"/><stop offset="1" stop-color="#35f1ff"/></linearGradient>
+            <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+          <!-- stylized world silhouette -->
+          <path d="M58 118 C85 91 118 82 151 90 L180 111 166 132 139 135 119 151 91 144 71 155 48 142Z
+                   M194 76 C225 61 268 63 301 82 L328 94 345 116 332 133 303 132 282 146 260 139 242 122 218 120 204 104Z
+                   M352 83 C388 64 434 65 474 83 L510 99 535 120 521 137 493 133 469 145 440 139 416 149 393 135 369 132 347 113Z
+                   M278 151 C299 160 314 181 310 201 L298 226 282 245 269 224 274 200 259 179Z
+                   M430 151 C452 153 469 169 466 189 L449 203 434 193 424 174Z"
+                fill="rgba(53,241,255,.045)" stroke="rgba(53,241,255,.18)" stroke-width="1"/>
+          <g class="route">
+            <path d="M111 126 Q255 30 427 113" stroke="url(#routeG)"/>
+            <path d="M151 126 Q310 160 454 174" stroke="url(#routeG)"/>
+            <path d="M111 126 Q300 250 444 174" stroke="url(#routeG)"/>
+            <path d="M207 103 Q344 78 454 174" stroke="url(#routeG)"/>
+          </g>
+          <g>
+            <circle class="map-node" cx="111" cy="126" r="6"/><circle class="map-dot" cx="207" cy="103" r="5"/>
+            <circle class="map-dot" cx="270" cy="117" r="5"/><circle class="map-node" cx="427" cy="113" r="6"/>
+            <circle class="map-dot" cx="454" cy="174" r="5"/><circle class="map-dot" cx="305" cy="198" r="5"/>
+            <circle class="map-dot" cx="174" cy="186" r="4"/><circle class="map-dot" cx="499" cy="128" r="4"/>
+          </g>
+          <g fill="#b9f8ff" font-size="10" font-family="Inter">
+            <text x="76" y="108">AMERICA</text><text x="245" y="70">EUROPE</text>
+            <text x="388" y="70">ASIA</text><text x="408" y="225">AUSTRALIA</text>
+          </g>
+        </svg>
+        <div style="display:grid;gap:7px;font-size:11px;color:#c8d2ea">
+          <div>✓ Talk to people from different places</div>
+          <div>✓ Discover cultures and interests</div>
+          <div>✓ Share ideas, Posts and Moments</div>
+          <div>✓ Use supported HD audio and video calls</div>
+        </div>
+      </aside>
     </div>
   </div>
-</div>
 </section>
 
 <section class="section">
-<div class="container">
-  <div class="glass reveal">
-    <div class="section-head">
-      <div class="kicker">Social Experience</div>
-      <h2>Share, discover and communicate.</h2>
-      <p>Different features give users different ways to participate in the Zivo community.</p>
-    </div>
-
-    <div class="two-col">
-      <div class="info">
-        <h3>📝 Posts & Moments</h3>
-        <p>
-          Users can share posts and Moments to express thoughts, updates, interests,
-          experiences and other appropriate content. Available content can be explored
-          through the social features provided by the application.
-        </p>
-        <div class="list">
-          <div><span>Share</span><span>Posts & Moments</span></div>
-          <div><span>Explore</span><span>Available social content</span></div>
-          <div><span>Interact</span><span>With supported content</span></div>
+  <div class="container">
+    <div class="story reveal">
+      <div class="story-grid">
+        <div>
+          <div class="people">
+            <div class="avatar">👩</div><div class="avatar">👨</div><div class="avatar">👩</div><div class="avatar">👨</div><div class="avatar">🌍</div>
+            <div class="people-badge">People Around the World<span>Real conversations. Shared interests.</span></div>
+          </div>
+          <h3>Real People. <span>Real Conversations.</span></h3>
+          <p>
+            Whether you want to make new friends, talk about your interests, discuss study and ideas,
+            learn about another culture, share an experience, or simply have a natural online conversation,
+            ZivoApp brings those digital interactions together in one place.
+          </p>
         </div>
-      </div>
-
-      <div class="info">
-        <h3>📞 Real-Time Communication</h3>
-        <p>
-          Users can communicate through supported real-time audio and video calling
-          features. Calls depend on user availability and the applicable functionality
-          of the application.
-        </p>
-        <div class="list">
-          <div><span>Audio</span><span>Real-time voice conversations</span></div>
-          <div><span>Video</span><span>Real-time video conversations</span></div>
-          <div><span>Communication</span><span>Online only</span></div>
+        <div class="story-list">
+          <div class="story-item"><b>🤝 Friendship</b><span>Meet people and build genuine online connections around shared interests.</span></div>
+          <div class="story-item"><b>📚 Study & Ideas</b><span>Discuss subjects, learning, careers, skills and ideas with people online.</span></div>
+          <div class="story-item"><b>🌏 Culture & Language</b><span>Talk about different cultures, languages, traditions and perspectives.</span></div>
+          <div class="story-item"><b>📞 Global Calls</b><span>Use supported HD audio and video calls to communicate across locations.</span></div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 <section class="section" id="preview">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="kicker">App Preview</div>
-    <h2>Explore the Zivo interface.</h2>
-    <p>Selected application screens are shown below.</p>
+  <div class="container">
+    <div class="center reveal">
+      <div class="kicker">Zivo Experience</div>
+      <h2>Share Your World</h2>
+      <p class="lead">Create Posts and Moments, discover content and communicate through supported real-time features.</p>
+    </div>
+    <div class="preview-grid">
+      <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="ZivoApp Home"><div class="preview-label">Home <span>Your social starting point</span></div></div>
+      <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-discover.jpeg" alt="ZivoApp Discover"><div class="preview-label">Discover <span>Explore people and social content</span></div></div>
+      <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-callscreen.png.jpeg" alt="ZivoApp Call"><div class="preview-label">HD Calls <span>Real-time audio and video communication</span></div></div>
+    </div>
   </div>
-
-  <div class="preview-grid">
-    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="Zivo Home Screen"><span>Home</span></div>
-    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-discover.jpeg" alt="Zivo Discover Screen"><span>Discover</span></div>
-    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-callscreen.png.jpeg" alt="Zivo Call Screen"><span>Live Call</span></div>
-    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-splash.jpeg" alt="Zivo Splash Screen"><span>Welcome to Zivo</span></div>
-  </div>
-</div>
 </section>
 
-<section class="section" id="business">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="kicker">Company Information</div>
-    <h2>About ZivoApp.</h2>
-    <p>Clear information about the platform, its purpose and business details.</p>
-  </div>
-
-  <div class="business-grid">
-    <div class="business-card reveal">
-      <div class="badge">Official Business Information</div>
-      <h3>ZivoApp</h3>
-      <p>
-        ZivoApp is a social networking and entertainment platform that enables users
-        to connect through online social features and real-time audio and video communication.
-      </p>
-
-      <div class="owner">
-        <div class="owner-row"><span>Legal Business Owner</span><span>CHANDRAKALA ANGOTH</span></div>
-        <div class="owner-row"><span>Business Name</span><span>ZivoApp</span></div>
-        <div class="owner-row"><span>Operated & Managed by</span><span>BHUKYA PAVANKALYAN</span></div>
-        <div class="owner-row"><span>Service Availability</span><span>Worldwide 🌍</span></div>
-        <div class="owner-row"><span>Website</span><span>www.zivoapp.in</span></div>
-        <div class="owner-row"><span>Support</span><span>zivo.support@gmail.com</span></div>
-      </div>
+<section class="section">
+  <div class="container">
+    <div class="three">
+      <article class="info-card reveal">
+        <h3>📞 HD Audio & Video Calls</h3>
+        <p>Stay connected through supported real-time calling features when users are available.</p>
+        <ul><li>High-quality audio communication</li><li>HD video calling experience</li><li>Real-time online communication</li><li>Worldwide digital connectivity</li></ul>
+      </article>
+      <article class="info-card reveal">
+        <h3>🌐 Global Digital Networking</h3>
+        <p>ZivoApp is designed for online communication between people from different places and countries.</p>
+        <ul><li>Discover people worldwide</li><li>Share Posts and Moments</li><li>Talk across cultures and interests</li><li>Digital-first communication</li></ul>
+      </article>
+      <article class="info-card reveal">
+        <h3>🎓 Built for Everyday Conversations</h3>
+        <p>The platform can support casual social interaction, friendships, study discussions and exchanging ideas online.</p>
+        <ul><li>Friendship & social connection</li><li>Study and idea discussions</li><li>Culture and language conversations</li><li>Online-only experience</li></ul>
+      </article>
     </div>
+  </div>
+</section>
 
-    <div class="glass reveal">
-      <div class="info">
-        <h3>📌 Platform Purpose</h3>
+<section class="section" id="company">
+  <div class="container">
+    <div class="center reveal">
+      <div class="kicker">Company</div>
+      <h2>Built as a Global Digital Communication Brand</h2>
+      <p class="lead">ZivoApp brings social networking and real-time communication into one worldwide digital platform.</p>
+    </div>
+    <div class="company">
+      <div class="company-card reveal">
+        <div class="kicker">Official Business Information</div>
+        <h3>ZivoApp</h3>
+        <p>ZivoApp is a social networking and communication platform for Posts, Moments, online interaction and real-time audio and video communication.</p>
+        <div class="details">
+          <div><span>Owner</span><span>CHANDRAKALA ANGOTH</span></div>
+          <div><span>Operated by</span><span>BHUKYA PAVANKALYAN</span></div>
+          <div><span>Availability</span><span>Worldwide 🌍</span></div>
+          <div><span>Website</span><span>www.zivoapp.in</span></div>
+          <div><span>Support</span><span>zivo.support@gmail.com</span></div>
+        </div>
+      </div>
+      <div class="company-detail reveal">
+        <div class="kicker">What Zivo Means</div>
+        <h3 style="font-size:26px;margin-bottom:10px">A digital place to connect, share and communicate.</h3>
         <p>
-          Zivo focuses on digital communication and user engagement. It is designed
-          for online social interaction through profiles, posts, Moments, audio calls,
-          video calls and other supported in-app features.
+          ZivoApp focuses on digital social interaction: people can create profiles, publish Posts and Moments,
+          discover available users, talk about interests, friendship, study, culture and ideas, and use supported
+          real-time audio and video communication. ZivoApp does not provide or arrange offline meetings or physical services.
         </p>
-        <div class="list">
-          <div><span>Service type</span><span>Digital social networking platform</span></div>
-          <div><span>Communication</span><span>Audio + Video</span></div>
+        <div class="details">
+          <div><span>Platform</span><span>Digital social networking</span></div>
+          <div><span>Communication</span><span>HD Audio + Video</span></div>
           <div><span>Social content</span><span>Posts + Moments</span></div>
-          <div><span>Availability</span><span>Worldwide, subject to requirements</span></div>
-          <div><span>Offline services</span><span>Not provided</span></div>
-          <div><span>Payments</span><span>Virtual coins / supported in-app features</span></div>
+          <div><span>Reach</span><span>Worldwide digital availability</span></div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 <section class="section" id="safety">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="kicker">Safety & Responsible Use</div>
-    <h2>Use Zivo responsibly.</h2>
-    <p>ZivoApp is intended for responsible online communication and social interaction.</p>
-  </div>
-
-  <div class="safety">
-    <div class="safety-item reveal"><div class="big">🔐</div><h3>Privacy</h3><p>Users should review the Privacy Policy and avoid sharing sensitive personal information with people they do not know.</p></div>
-    <div class="safety-item reveal"><div class="big">🛡️</div><h3>Responsible Communication</h3><p>Users are expected to follow applicable laws, community rules and ZivoApp policies when using the platform.</p></div>
-    <div class="safety-item reveal"><div class="big">🚫</div><h3>No Offline Arrangements</h3><p>ZivoApp is a digital communication platform and does not provide or arrange physical meetings or offline services.</p></div>
-  </div>
-</div>
-</section>
-
-<section class="section">
-<div class="container">
-  <div class="glass delete reveal">
-    <div class="section-head">
-      <div class="kicker">Account Control</div>
-      <h2>Account Deletion</h2>
-      <p>Users can request deletion of their account and personal data.</p>
+  <div class="container">
+    <div class="center reveal">
+      <div class="kicker">Safety & Responsible Use</div>
+      <h2>Connect Responsibly</h2>
+      <p class="lead">ZivoApp is intended for responsible online communication and social interaction.</p>
     </div>
-    <p style="color:#bdbccc;font-size:13px">To request account deletion:</p>
-    <ol>
-      <li>Send an email to <b>zivo.support@gmail.com</b>.</li>
-      <li>Use your registered phone number.</li>
-      <li>Mention “Delete my account”.</li>
-    </ol>
-    <p style="margin-top:15px;color:#bdbccc;font-size:13px">Your account and associated data will be deleted within 7 days of the request.</p>
-    <div class="notice">
-      Data deleted includes profile information, call history and app usage data.
-      Some data may be retained if required for legal or security purposes.
+    <div class="three">
+      <div class="info-card reveal"><h3>🔐 Privacy</h3><p>Review the Privacy Policy and avoid sharing sensitive personal information with people you do not know.</p></div>
+      <div class="info-card reveal"><h3>🛡️ Responsible Communication</h3><p>Follow applicable laws, community rules and ZivoApp policies when using the platform.</p></div>
+      <div class="info-card reveal"><h3>🚫 Online Only</h3><p>ZivoApp is a digital communication platform and does not arrange physical meetings or offline services.</p></div>
     </div>
   </div>
-</div>
 </section>
 
 <section class="section cta" id="download">
-<div class="container">
-  <div class="cta-box reveal">
-    <div class="kicker">ZivoApp</div>
-    <h2>Connect. Share. Communicate.</h2>
-    <p>
-      Discover people, share posts and Moments, and communicate through supported
-      real-time audio and video features.
-    </p>
-    <a class="btn" href="#">Get ZivoApp — Coming Soon on Google Play</a>
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="kicker">ZivoApp</div>
+      <h2>Join <span>ZivoApp</span> Today</h2>
+      <p>Share, talk, make friends, exchange ideas and explore digital connections with people around the world.</p>
+      <a class="btn" href="#">⇩ Download ZivoApp — Google Play Coming Soon</a>
+    </div>
   </div>
-</div>
 </section>
-
 </main>
 
 <footer>
-<div class="container">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo" style="font-size:22px">ZIVO</div>
-      <p>ZivoApp is a global digital social networking and communication platform for posts, Moments, real-time audio and video communication, and online social interaction.</p>
+  <div class="container">
+    <div class="footer">
+      <div>
+        <div class="brand"><span class="brand-mark">♥</span>Zivo</div>
+        <p>ZivoApp is a global digital social networking and communication platform for Posts, Moments, HD audio and video calls, and online social interaction.</p>
+      </div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a><a href="/child-safety.html">Child Safety</a>
+        <a href="delete-account.html">Delete Account</a><a href="terms.html">Terms & Conditions</a>
+        <a href="contact.html">Contact</a><a href="refund.html">Refund Policy</a>
+        <a href="shipping.html">Shipping</a><a href="checkout.html">Checkout</a><a href="about.html">About</a>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="/child-safety.html">Child Safety</a>
-      <a href="delete-account.html">Delete Account</a>
-      <a href="terms.html">Terms & Conditions</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="refund.html">Refund Policy</a>
-      <a href="shipping.html">Shipping & Delivery</a>
-      <a href="checkout.html">Checkout Page</a>
-      <a href="about.html">About</a>
+    <div class="copy">
+      <span>© 2026 ZivoApp. All rights reserved.</span>
+      <span>Owned by CHANDRAKALA ANGOTH • Operated by BHUKYA PAVANKALYAN • zivo.support@gmail.com</span>
     </div>
   </div>
-  <div class="copy">
-    <span>© 2026 ZivoApp. All rights reserved.</span>
-    <span>Owned by CHANDRAKALA ANGOTH • Operated by BHUKYA PAVANKALYAN • zivo.support@gmail.com</span>
-  </div>
-</div>
 </footer>
 
 <script>
-const header=document.getElementById("header");
-window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>30),{passive:true});
-
-const particleLayer=document.getElementById("particles");
-function particle(){
-  const p=document.createElement("i");
-  p.className="particle";
-  const s=Math.random()*6+2;
-  p.style.width=s+"px";p.style.height=s+"px";
-  p.style.left=Math.random()*100+"%";
-  p.style.bottom=(-10-Math.random()*20)+"vh";
-  p.style.animationDuration=(10+Math.random()*15)+"s";
-  p.style.animationDelay=(Math.random()*4)+"s";
-  p.style.setProperty("--x",(Math.random()*180-90)+"px");
-  particleLayer.appendChild(p);
-  setTimeout(()=>p.remove(),27000);
+const bubbleLayer=document.getElementById('bubbles');
+function makeBubble(){
+  const b=document.createElement('i'); b.className='bubble';
+  const s=18+Math.random()*90;
+  b.style.width=s+'px'; b.style.height=s+'px';
+  b.style.left=Math.random()*100+'%';
+  b.style.bottom=(-15-Math.random()*25)+'vh';
+  b.style.animationDuration=(13+Math.random()*18)+'s';
+  b.style.animationDelay=(Math.random()*5)+'s';
+  b.style.setProperty('--dx',(Math.random()*220-110)+'px');
+  bubbleLayer.appendChild(b);
+  setTimeout(()=>b.remove(),34000);
 }
-for(let i=0;i<28;i++)setTimeout(particle,i*180);
-setInterval(particle,700);
+for(let i=0;i<22;i++) setTimeout(makeBubble,i*170);
+setInterval(makeBubble,1100);
 
-const revealObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add("show");revealObserver.unobserve(e.target)}
-  });
-},{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}});
+},{threshold:.10});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener("click",e=>{
-    const id=a.getAttribute("href");
-    if(id && id!=="#"){
-      const target=document.querySelector(id);
-      if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"})}
-    }
+const tiltEls=document.querySelectorAll('.feature,.info-card,.company-card,.company-detail,.preview,.map-card');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  tiltEls.forEach(el=>{
+    el.addEventListener('pointermove',e=>{
+      const r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+      const rx=((y/r.height)-.5)*-3, ry=((x/r.width)-.5)*3;
+      el.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
+    });
+    el.addEventListener('pointerleave',()=>el.style.transform='');
   });
-});
-
-document.querySelectorAll("img").forEach(img=>{
-  img.addEventListener("error",()=>{
-    img.style.background="linear-gradient(135deg,#170c1b,#100d25,#06202a)";
-    img.style.objectFit="contain";
-    img.style.padding="30px";
-  });
-});
+}
 </script>
 </body>
 </html>
