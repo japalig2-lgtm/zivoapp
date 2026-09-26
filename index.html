@@ -1,528 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <div style="text-align:center; padding:10px; background:#000; color:#00ffc3; font-weight:600; font-size:14px;">
-ZivoApp – Global Audio & Video Communication Platform 🌍 | 
-Owned by CHANDRAKALA ANGOTH | 
-Operated by BHUKYA PAVANKALYAN | 
-Support: zivo.support@gmail.com
-</div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zivo App | Professional Social Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00ffc3;
-            --secondary: #00bfff;
-            --dark-bg: #080a12;
-            --card-glass: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(255, 255, 255, 0.1);
-            --shadow-5d: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZivoApp is a social networking and communication platform for posts, Moments, real-time audio and video calls, and online social interaction worldwide.">
+<meta name="theme-color" content="#080711">
+<title>ZivoApp | Connect, Share & Communicate Worldwide</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--dark-bg);
-            background-attachment: fixed;
-            color: white;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+<style>
+:root{
+  --pink:#ff2f9f;
+  --pink2:#ff67bd;
+  --purple:#7b4dff;
+  --cyan:#27dff5;
+  --gold:#ffd166;
+  --green:#39e89b;
+  --bg:#06060d;
+  --bg2:#0d0b18;
+  --text:#fff;
+  --muted:#aaa9bd;
+  --glass:rgba(255,255,255,.055);
+  --glass2:rgba(255,255,255,.09);
+  --border:rgba(255,255,255,.12);
+  --shadow:0 28px 80px rgba(0,0,0,.42);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Poppins,sans-serif;color:var(--text);
+  background:
+    radial-gradient(circle at 12% 10%,rgba(255,47,159,.15),transparent 27%),
+    radial-gradient(circle at 88% 18%,rgba(123,77,255,.16),transparent 28%),
+    radial-gradient(circle at 55% 90%,rgba(39,223,245,.10),transparent 30%),
+    linear-gradient(135deg,#04040a,#0a0915 52%,#05050b);
+  overflow-x:hidden;line-height:1.65;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-5;opacity:.14;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:65px 65px;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
 
-        /* --- 5D BACKGROUND ANIMATION --- */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #080a12 100%);
-        }
+.top-strip{
+  padding:9px 14px;text-align:center;font-size:11px;font-weight:700;
+  color:#fff;background:linear-gradient(90deg,#ff2f9f,#7b4dff,#27dff5,#ff2f9f);
+  background-size:300% 100%;animation:gradient 9s linear infinite;
+  position:relative;z-index:1001;
+}
+@keyframes gradient{to{background-position:300% 0}}
 
-        .bubbles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .bubbles span {
-            position: absolute;
-            bottom: -120px;
-            background: linear-gradient(to top, rgba(0, 255, 195, 0.2), transparent);
-            border-radius: 50%;
-            animation: rise 15s infinite ease-in-out;
-            filter: blur(2px);
-        }
-
-        @keyframes rise {
-            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
-            30% { opacity: 0.6; }
-            100% { transform: translateY(-130vh) scale(1.5) rotate(360deg); opacity: 0; }
-        }
-
-        /* --- PROFESSIONAL HEADER --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            position: fixed;
-            width: 100%;
-            background: rgba(8, 10, 18, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(0, 255, 195, 0.4);
-            transition: 0.5s;
-        }
-
-        .logo:hover { transform: scale(1.05); filter: brightness(1.2); }
-
-        .btn {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: #000;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0, 255, 195, 0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 255, 195, 0.4);
-            filter: brightness(1.1);
-        }
-
-        /* --- HERO SECTION (5D LAYERING) --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 10% 80px;
-            perspective: 1000px;
-        }
-
-        .hero-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            max-width: 1200px;
-        }
-
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: clamp(60px, 8vw, 90px);
-            font-weight: 800;
-            line-height: 0.9;
-            margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff 40%, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p.tagline {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 25px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .hero-desc {
-            font-size: 17px;
-            color: #b0b0b0;
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-image-wrap {
-            position: relative;
-            transform-style: preserve-3d;
-            animation: floatHero 6s ease-in-out infinite;
-        }
-
-        @keyframes floatHero {
-            0%, 100% { transform: translateY(0) rotateY(-10deg); }
-            50% { transform: translateY(-20px) rotateY(5deg); }
-        }
-
-        .hero img {
-            width: 320px;
-            border-radius: 30px;
-            border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-5d);
-        }
-
-        /* --- PAPER STYLE CARDS (RE-IMAGINED) --- */
-        .section { padding: 100px 8%; text-align: center; }
-        .section h2 { font-size: 42px; margin-bottom: 60px; font-family: 'Poppins'; font-weight: 700; }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white; /* Maintaining your Paper Style Request */
-            color: #111;
-            border-radius: 24px;
-            padding: 40px 30px;
-            font-weight: 700;
-            font-size: 18px;
-            box-shadow: 10px 10px 0px var(--primary);
-            border: 1px solid #ddd;
-            transition: all 0.4s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 140px;
-        }
-
-        .card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 15px 15px 0px var(--secondary);
-        }
-
-        /* --- PEOPLE GRID --- */
-        .people {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .people img {
-            width: 280px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 25px;
-            filter: grayscale(20%) brightness(0.9);
-            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid var(--border-glass);
-        }
-
-        .people img:hover {
-            filter: grayscale(0%) brightness(1.1);
-            transform: scale(1.03) translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 195, 0.3);
-        }
-
-        /* --- TRUST SECTION --- */
-        .trust {
-            background: var(--card-glass);
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(15px);
-            padding: 60px 40px;
-            border-radius: 30px;
-            max-width: 850px;
-            margin: auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .trust::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(0,255,195,0.05) 0%, transparent 70%);
-        }
-
-        .trust p { font-size: 18px; color: #d0d0d0; position: relative; z-index: 1; }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #040508;
-            padding: 80px 8% 40px;
-            border-top: 1px solid var(--border-glass);
-            text-align: center;
-        }
-
-       footer p {
-    color: #cccccc;
-    margin-bottom: 15px;
-    font-size: 14px;
+header{
+  position:fixed;top:34px;left:0;width:100%;z-index:1000;
+  padding:15px 4%;transition:.35s;
+}
+header.scrolled{
+  top:0;background:rgba(6,6,13,.76);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);
+}
+.nav{width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{
+  font-size:28px;font-weight:900;letter-spacing:4px;
+  background:linear-gradient(90deg,#fff,var(--pink2),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.nav-links{display:flex;gap:5px;align-items:center}
+.nav-links a{padding:9px 13px;border-radius:22px;color:#d7d6e2;font-size:12px;font-weight:700;transition:.25s}
+.nav-links a:hover{background:var(--glass2);color:#fff}
+.nav-btn{
+  padding:11px 18px;border-radius:30px;
+  background:linear-gradient(110deg,var(--pink),var(--purple));
+  font-size:11px;font-weight:900;box-shadow:0 12px 30px rgba(255,47,159,.2)
 }
 
-footer a {
-    margin: 0 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #00ffc3;   /* 🔥 Bright color */
-    text-decoration: none;
-    transition: 0.3s;
+.hero{
+  min-height:100vh;padding:150px 0 90px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
 }
-
-footer a:hover {
-    color: #ffffff;
-    text-decoration: underline;
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;
 }
+.hero:before{width:430px;height:430px;left:-170px;top:25%;background:rgba(255,47,159,.14);animation:orb 9s ease-in-out infinite alternate}
+.hero:after{width:400px;height:400px;right:-140px;bottom:-80px;background:rgba(39,223,245,.11);animation:orb 11s ease-in-out infinite alternate-reverse}
+@keyframes orb{to{transform:translate(55px,-35px) scale(1.12)}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--border);
+  background:var(--glass);border-radius:30px;font-size:11px;font-weight:800;margin-bottom:20px
+}
+.live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.7);opacity:.45}}
+.hero h1{
+  font-size:clamp(65px,9vw,108px);line-height:.85;letter-spacing:-5px;margin-bottom:22px;font-weight:900;
+  background:linear-gradient(120deg,#fff 15%,#fff 38%,var(--pink2) 58%,#9c7cff 78%,var(--cyan));
+  background-size:240%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:titleFlow 7s ease-in-out infinite;
+}
+@keyframes titleFlow{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.tagline{color:var(--pink2);font-size:14px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+.hero-desc{max-width:650px;color:#b8b7c8;font-size:17px;margin-bottom:23px}
+.owner-line{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:27px}
+.owner-chip{padding:8px 12px;border-radius:13px;background:var(--glass);border:1px solid var(--border);font-size:11px;font-weight:700}
+.owner-chip span{color:var(--pink2)}
+.actions{display:flex;flex-wrap:wrap;gap:11px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:15px;
+  background:linear-gradient(110deg,var(--pink),var(--purple),var(--cyan));
+  background-size:220%;color:#fff;font-weight:900;font-size:12px;border:0;
+  box-shadow:0 15px 40px rgba(255,47,159,.18);transition:.3s;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(255,47,159,.28)}
+.btn.secondary{background:var(--glass);border:1px solid var(--border);box-shadow:none}
 
-        /* --- MOBILE OPTIMIZATION --- */
-        @media(max-width:992px) {
-            .hero-text { text-align: center; }
-            .hero h1 { font-size: 55px; }
-            .hero-desc { margin: 0 auto 40px; }
-        }
+.hero-visual{min-height:550px;display:flex;align-items:center;justify-content:center;position:relative}
+.phone-glow{position:absolute;width:370px;height:500px;border-radius:50%;background:conic-gradient(rgba(255,47,159,.2),rgba(123,77,255,.22),rgba(39,223,245,.18),rgba(255,47,159,.2));filter:blur(55px);animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.phone{
+  width:min(325px,72vw);padding:9px;border-radius:38px;
+  background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.22);box-shadow:var(--shadow);
+  transform:rotateY(-7deg);animation:float 6s ease-in-out infinite;position:relative
+}
+@keyframes float{0%,100%{transform:translateY(0) rotateY(-7deg)}50%{transform:translateY(-15px) rotateY(5deg)}}
+.phone img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:30px}
+.float-card{
+  position:absolute;padding:12px 15px;border-radius:17px;background:rgba(8,8,18,.76);
+  border:1px solid var(--border);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);
+  font-size:11px;font-weight:800;animation:floatCard 5s ease-in-out infinite
+}
+.float-card b{display:block;font-size:17px;color:var(--green)}
+.float-card.one{left:0;top:17%}.float-card.two{right:0;bottom:17%;animation-delay:-2s}
+@keyframes floatCard{50%{transform:translateY(-11px)}}
 
-        @media(max-width:768px){
-            header { padding: 15px 5%; }
-            .hero { padding-top: 100px; }
-            .hero img { width: 80%; max-width: 280px; }
-            .card { min-height: 100px; padding: 20px; }
-        }
-    </style>
+.section{padding:105px 0;position:relative}
+.section-head{text-align:center;max-width:780px;margin:0 auto 48px}
+.kicker{color:var(--pink2);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:9px}
+.section h2{font-size:clamp(32px,5vw,51px);line-height:1.06;letter-spacing:-2px;margin-bottom:13px}
+.section-head p{color:var(--muted);font-size:14px}
+.reveal{opacity:0;transform:translateY(26px);transition:.8s ease}
+.reveal.show{opacity:1;transform:none}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.card{
+  min-height:220px;padding:27px;border-radius:25px;border:1px solid var(--border);
+  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  backdrop-filter:blur(18px);box-shadow:0 20px 55px rgba(0,0,0,.2);transition:.35s;position:relative;overflow:hidden
+}
+.card:before{content:"";position:absolute;width:170px;height:170px;right:-70px;top:-70px;border-radius:50%;background:radial-gradient(circle,rgba(255,47,159,.22),transparent 70%)}
+.card:hover{transform:translateY(-9px);border-color:rgba(255,255,255,.25);box-shadow:0 30px 65px rgba(0,0,0,.34)}
+.icon{
+  width:53px;height:53px;display:grid;place-items:center;border-radius:16px;font-size:24px;
+  background:linear-gradient(135deg,rgba(255,47,159,.2),rgba(123,77,255,.2));border:1px solid var(--border);margin-bottom:22px
+}
+.card h3{font-size:17px;margin-bottom:8px}.card p{font-size:12px;color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.stat{text-align:center;padding:21px;border:1px solid var(--border);border-radius:20px;background:var(--glass)}
+.stat strong{display:block;font-size:32px;font-weight:900;background:linear-gradient(90deg,#fff,var(--pink2),var(--cyan));-webkit-background-clip:text;color:transparent}
+.stat span{font-size:10px;color:#9090a4;text-transform:uppercase;letter-spacing:1.4px}
+
+.glass{
+  padding:50px;border-radius:32px;border:1px solid var(--border);
+  background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  backdrop-filter:blur(22px);box-shadow:var(--shadow)
+}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info{
+  padding:27px;border-radius:23px;background:rgba(255,255,255,.035);border:1px solid var(--border)
+}
+.info h3{font-size:21px;margin-bottom:9px}.info p{color:#b6b5c7;font-size:13px}
+.list{margin-top:18px;display:grid;gap:0}
+.list div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px}
+.list div:last-child{border:0}.list span:first-child{color:#858599}.list span:last-child{text-align:right;font-weight:800}
+
+.preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.preview{border:1px solid var(--border);border-radius:24px;overflow:hidden;position:relative;background:#111;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.preview img{width:100%;height:430px;display:block;object-fit:cover;transition:.6s}
+.preview:hover img{transform:scale(1.07)}
+.preview:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 48%);pointer-events:none}
+.preview span{position:absolute;left:15px;bottom:14px;z-index:2;font-size:12px;font-weight:900}
+
+.feature-story{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch
+}
+.story-main,.story-side{
+  padding:32px;border-radius:28px;border:1px solid var(--border);
+  background:linear-gradient(145deg,rgba(255,47,159,.08),rgba(123,77,255,.06),rgba(39,223,245,.045))
+}
+.story-main h3{font-size:30px;line-height:1.1;margin:10px 0 12px}.story-main p,.story-side p{color:#b4b3c5;font-size:14px}
+.story-side{display:grid;gap:14px}
+.story-item{padding:17px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--border)}
+.story-item h4{font-size:15px;margin-bottom:5px}.story-item p{font-size:12px}
+
+.business-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.business-card{padding:32px;border-radius:28px;border:1px solid var(--border);background:linear-gradient(145deg,rgba(255,47,159,.09),rgba(123,77,255,.07))}
+.badge{display:inline-block;padding:7px 10px;border-radius:20px;color:var(--gold);background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.16);font-size:9px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:15px}
+.business-card h3{font-size:29px;margin-bottom:9px}.business-card>p{color:#b6b5c7;font-size:13px}
+.owner{margin-top:23px;padding-top:17px;border-top:1px solid rgba(255,255,255,.09);display:grid;gap:9px}
+.owner-row{display:flex;justify-content:space-between;gap:18px;font-size:12px}.owner-row span:first-child{color:#858599}.owner-row span:last-child;text-align:right;font-weight:800}
+
+.safety{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.safety-item{text-align:center;padding:27px;border-radius:23px;border:1px solid var(--border);background:var(--glass)}
+.safety-item .big{font-size:30px;margin-bottom:9px}.safety-item h3{font-size:16px;margin-bottom:6px}.safety-item p{font-size:12px;color:var(--muted)}
+
+.delete{max-width:900px;margin:auto}.delete ol{margin:16px 0 0 20px;color:#b9b8ca;font-size:13px}.delete li{padding:5px 0}
+.notice{margin-top:20px;padding:13px 15px;border-radius:15px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.16);color:#d8ceb2;font-size:12px}
+
+.cta{text-align:center}
+.cta-box{padding:65px 25px;border-radius:35px;border:1px solid var(--border);background:radial-gradient(circle at 20% 30%,rgba(255,47,159,.19),transparent 28%),radial-gradient(circle at 80% 70%,rgba(39,223,245,.14),transparent 28%),rgba(255,255,255,.04)}
+.cta-box p{color:#aaa9bd;max-width:620px;margin:0 auto 25px;font-size:14px}
+
+footer{padding:60px 0 30px;border-top:1px solid var(--border);background:rgba(2,2,7,.72)}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.footer-brand p{color:#858599;font-size:12px;max-width:520px;margin-top:9px}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;align-content:flex-start;gap:7px}
+.footer-links a{padding:7px 10px;border-radius:10px;color:#9998ac;font-size:11px}.footer-links a:hover{background:var(--glass2);color:#fff}
+.copy{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#69697c;font-size:10px}
+
+#particles{position:fixed;inset:0;pointer-events:none;z-index:-3;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--cyan));opacity:.3;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(20vh) scale(.5);opacity:0}15%{opacity:.35}100%{transform:translate(var(--x),-120vh) scale(1.5);opacity:0}}
+
+@media(max-width:1000px){
+  .hero-grid,.business-grid,.two-col,.feature-story{grid-template-columns:1fr}
+  .hero-text{text-align:center}.hero-desc{margin-left:auto;margin-right:auto}.owner-line,.actions{justify-content:center}
+  .cards,.preview-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
+  .safety{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}
+}
+@media(max-width:700px){
+  .nav-links{display:none}.hero{padding-top:130px}.hero h1{font-size:70px}
+  .hero-visual{min-height:470px}.float-card.one{left:-5px}.float-card.two{right:-5px}
+  .cards,.preview-grid,.stats{grid-template-columns:1fr}.glass{padding:28px 20px}
+  .preview img{height:390px}.owner-row{display:block}.owner-row span{display:block}.owner-row span:last-child{text-align:left;margin-top:2px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
 </head>
 
 <body>
+<div id="particles"></div>
 
-    <div id="bg-canvas"></div>
-    <div class="bubbles" id="bubbleContainer"></div>
+<div class="top-strip">
+  ZivoApp – Global Audio & Video Communication Platform 🌍
+  &nbsp;•&nbsp; Owned by CHANDRAKALA ANGOTH
+  &nbsp;•&nbsp; Operated by BHUKYA PAVANKALYAN
+  &nbsp;•&nbsp; Support: zivo.support@gmail.com
+</div>
 
-    <header>
-        <div class="logo">ZIVO</div>
-       
-    </header>
-
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h1>ZIVO</h1>
-             <p class="tagline">
-Global • Real-Time • Social Experience 🌍
-</p>
-    <p style="margin-top:10px; font-size:14px; color:#00ffc3;">
-Trusted by users across multiple countries • Built for global communication
-</p>            
-                <p class="hero-desc">         
-<p style="margin-top:10px; font-size:14px; color:#00ffc3;">
-Owned by CHANDRAKALA ANGOTH • Operated by BHUKYA PAVANKALYAN
-</p>
-                   Zivo is a social networking and entertainment platform where users can connect through
-real-time audio and video communication. Enjoy meaningful conversations,
-social interaction, and a safe digital environment.
-                </p>
-              <button class="btn" style="padding: 18px 45px; font-size: 16px;">
-    Available on Google Play (Coming Soon)
-</button>
-            </div>
-            <div class="hero-image-wrap">
-                <img src="https://images.pexels.com/photos/3783094/pexels-photo-3783094.jpeg" alt="Zivo App">
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features">
-        <h2>Features</h2>
-        <div class="cards">
-            <div class="card">📞 Live Audio & Video Calls</div>
-           <div class="card">💰 Virtual Coins for Interaction</div>
-            <div class="card">🔍 Find and Connect Friends</div>
-            <div class="card">🔐 Secure & Verified Platform</div>
-        </div>
-    </section>
-
-    <section class="section">
-    <div class="trust">
-        <h2 style="margin-bottom: 20px;">Global Platform</h2>
-        <p>
-            Zivo is a modern global communication platform designed to connect people 
-            across different countries through real-time audio and video interactions.
-        </p>
-
-        <p style="margin-top:15px;">
-            Our platform is built with scalable technology to support users worldwide, 
-            ensuring smooth, secure, and high-quality communication experiences.
-        </p>
+<header id="header">
+  <nav class="nav">
+    <a class="logo" href="#">ZIVO</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#preview">App Preview</a>
+      <a href="#business">Business</a>
+      <a href="#safety">Safety</a>
     </div>
-</section>
-   <section class="section">
-    <h2>App Preview</h2>
-    <div class="people">
+    <a class="nav-btn" href="#download">GET ZIVO</a>
+  </nav>
+</header>
 
-        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="Zivo Home Screen">
+<main>
 
-        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-discover.jpeg" alt="Zivo Discover Screen">
-
-        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-callscreen.png.jpeg" alt="Zivo Call Screen">
-
-        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-splash.jpeg" alt="Zivo Splash Screen">
-
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <div class="eyebrow"><span class="live"></span> REAL-TIME SOCIAL COMMUNICATION</div>
+      <div class="tagline">Connect • Share • Talk • Discover</div>
+      <h1>ZIVO</h1>
+      <p class="hero-desc">
+        ZivoApp is a social networking and communication platform where users can
+        create profiles, share posts and Moments, discover people, and communicate
+        through real-time audio and video calls.
+      </p>
+      <div class="owner-line">
+        <div class="owner-chip">Owner <span>CHANDRAKALA ANGOTH</span></div>
+        <div class="owner-chip">Operated by <span>BHUKYA PAVANKALYAN</span></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#download">Get ZivoApp — Google Play Coming Soon</a>
+        <a class="btn secondary" href="#features">Explore Features ↓</a>
+      </div>
     </div>
+
+    <div class="hero-visual reveal">
+      <div class="phone-glow"></div>
+      <div class="float-card one"><b>LIVE</b>Audio + Video Calls</div>
+      <div class="float-card two"><b>POSTS</b>Share & interact</div>
+      <div class="phone">
+        <img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="ZivoApp Home Screen">
+      </div>
+    </div>
+  </div>
 </section>
 
-    <section class="section">
-        <div class="trust">
-            <h2 style="margin-bottom: 20px;">Safe & Secure</h2>
-            <p>
-                Zivo ensures user privacy and secure transactions using trusted payment systems.
-                All payments are processed through reliable gateways and user data is protected.
-                We follow industry standards to provide a safe and trusted experience.
-            </p>
-        </div>
-    </section> 
-    
-<p style="margin-top:15px;">
-🌍 Serving users worldwide with secure and reliable communication infrastructure.
-</p>
-    <section class="section">
-    <div class="trust">
-        <h2 style="margin-bottom: 20px;">Platform Purpose</h2>
-        <p>
-            Zivo is designed as a social networking and entertainment platform for users to
-            communicate and interact through audio and video features.
-        </p>
+<section class="section" id="features">
+<div class="container">
+  <div class="section-head reveal">
+    <div class="kicker">What ZivoApp Offers</div>
+    <h2>One place to connect, share and communicate.</h2>
+    <p>Zivo brings social content and real-time communication features together in one online platform.</p>
+  </div>
 
-        <p style="margin-top:15px;">
-            The platform focuses on digital communication and user engagement.
-            It does not provide any offline services or real-world interactions.
-        </p>
- </div>
+  <div class="cards">
+    <article class="card reveal">
+      <div class="icon">📝</div>
+      <h3>Posts</h3>
+      <p>Create and publish posts to share thoughts, updates, interests and experiences with the Zivo community.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">✨</div>
+      <h3>Moments</h3>
+      <p>Use Moments to share updates and experiences and see available social content from other users.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">📞</div>
+      <h3>Audio Calls</h3>
+      <p>Have real-time voice conversations with available users through the audio calling feature.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🎥</div>
+      <h3>Video Calls</h3>
+      <p>Communicate face-to-face through real-time video and audio calling when the feature is available.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🌍</div>
+      <h3>Global Connection</h3>
+      <p>Connect online with people from different locations and countries, subject to availability and applicable requirements.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🔎</div>
+      <h3>Discover People</h3>
+      <p>Explore available profiles and discover people you may want to communicate with through the platform.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">💎</div>
+      <h3>Virtual Coins</h3>
+      <p>Supported in-app interactions may use virtual coins according to ZivoApp's applicable rules and pricing.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🛡️</div>
+      <h3>Responsible Use</h3>
+      <p>Zivo is intended for responsible online communication and social interaction in accordance with its policies.</p>
+    </article>
+  </div>
+
+  <div class="stats">
+    <div class="stat reveal"><strong>2</strong><span>Live communication modes</span></div>
+    <div class="stat reveal"><strong>24/7</strong><span>Digital access concept</span></div>
+    <div class="stat reveal"><strong>🌍</strong><span>Worldwide platform</span></div>
+    <div class="stat reveal"><strong>1</strong><span>Social communication platform</span></div>
+  </div>
+</div>
 </section>
+
+<section class="section" id="how">
+<div class="container">
+  <div class="section-head reveal">
+    <div class="kicker">How ZivoApp Works</div>
+    <h2>Simple online communication.</h2>
+    <p>Users can choose how they want to participate based on the features available to them.</p>
+  </div>
+
+  <div class="feature-story">
+    <div class="story-main reveal">
+      <div class="kicker">Everyday Communication</div>
+      <h3>Talk naturally. Share what matters. Stay connected.</h3>
+      <p>
+        ZivoApp is designed for people who want to communicate online in a natural way.
+        A user can maintain a profile, discover other users, share posts or Moments,
+        and use supported audio or video calling features for real-time conversations.
+      </p>
+    </div>
+
+    <div class="story-side reveal">
+      <div class="story-item">
+        <h4>👥 For students and everyday users</h4>
+        <p>Users may use the platform for casual conversations, exchanging ideas, discussing interests, sharing experiences, and staying socially connected online.</p>
+      </div>
+      <div class="story-item">
+        <h4>🌐 Across different locations</h4>
+        <p>The platform is intended to support online communication between users from different places and countries, subject to availability and applicable requirements.</p>
+      </div>
+      <div class="story-item">
+        <h4>📱 Digital-first experience</h4>
+        <p>Zivo is an online platform. It does not provide offline services or arrange physical or real-world meetings between users.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <section class="section">
-    <div class="trust">
-        <h2 style="margin-bottom: 20px;">Business Information</h2>
-
-        <p>
-            ZivoApp is a social networking and entertainment platform that enables users
-            to connect through real-time audio and video communication.
-        </p>
-<p style="margin-top:15px;">
-<strong>Legal Business Owner:</strong> CHANDRAKALA ANGOTH <br>
-<strong>Business Name:</strong> ZivoApp <br>
-<strong>Operated & Managed by:</strong> BHUKYA PAVANKALYAN <br>
-<strong>Service Availability:</strong> Worldwide 🌍 <br>
-<strong>Website:</strong> https://www.zivoapp.in <br>
-<strong>Support Email:</strong> zivo.support@gmail.com
-</p>
-       <p style="margin-top:15px;">
-            <strong>Service Type:</strong> Digital social networking platform <br>
-            <strong>Payments:</strong> Used only for virtual coins and in-app features
-        </p>
+<div class="container">
+  <div class="glass reveal">
+    <div class="section-head">
+      <div class="kicker">Social Experience</div>
+      <h2>Share, discover and communicate.</h2>
+      <p>Different features give users different ways to participate in the Zivo community.</p>
     </div>
+
+    <div class="two-col">
+      <div class="info">
+        <h3>📝 Posts & Moments</h3>
+        <p>
+          Users can share posts and Moments to express thoughts, updates, interests,
+          experiences and other appropriate content. Available content can be explored
+          through the social features provided by the application.
+        </p>
+        <div class="list">
+          <div><span>Share</span><span>Posts & Moments</span></div>
+          <div><span>Explore</span><span>Available social content</span></div>
+          <div><span>Interact</span><span>With supported content</span></div>
+        </div>
+      </div>
+
+      <div class="info">
+        <h3>📞 Real-Time Communication</h3>
+        <p>
+          Users can communicate through supported real-time audio and video calling
+          features. Calls depend on user availability and the applicable functionality
+          of the application.
+        </p>
+        <div class="list">
+          <div><span>Audio</span><span>Real-time voice conversations</span></div>
+          <div><span>Video</span><span>Real-time video conversations</span></div>
+          <div><span>Communication</span><span>Online only</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
-    <section class="section">
-    <div class="trust">
-        <h2 style="margin-bottom: 20px;">Account Deletion</h2>
+<section class="section" id="preview">
+<div class="container">
+  <div class="section-head reveal">
+    <div class="kicker">App Preview</div>
+    <h2>Explore the Zivo interface.</h2>
+    <p>Selected application screens are shown below.</p>
+  </div>
 
-        <p>
-            Users can request deletion of their account and personal data at any time.
-        </p>
-
-        <p style="margin-top:15px;">
-            To delete your account:
-        </p>
-
-        <ul style="margin-top:10px; text-align:left; max-width:500px; margin-left:auto; margin-right:auto;">
-            <li>Send an email to: <b>zivo.support@gmail.com</b></li>
-            <li>Use your registered phone number</li>
-            <li>Mention "Delete my account"</li>
-        </ul>
-
-        <p style="margin-top:15px;">
-            Your account and associated data will be deleted within 7 days of request.
-        </p>
-
-        <p style="margin-top:15px;">
-            Data deleted includes:
-        </p>
-
-        <ul style="margin-top:10px; text-align:left; max-width:500px; margin-left:auto; margin-right:auto;">
-            <li>Profile information</li>
-            <li>Call history</li>
-            <li>App usage data</li>
-        </ul>
-
-        <p style="margin-top:15px;">
-            Some data may be retained if required for legal or security purposes.
-        </p>
-    </div>
+  <div class="preview-grid">
+    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-home.png" alt="Zivo Home Screen"><span>Home</span></div>
+    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-discover.jpeg" alt="Zivo Discover Screen"><span>Discover</span></div>
+    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-callscreen.png.jpeg" alt="Zivo Call Screen"><span>Live Call</span></div>
+    <div class="preview reveal"><img src="https://raw.githubusercontent.com/japalig2-lgtm/zivoapp/main/zivo-splash.jpeg" alt="Zivo Splash Screen"><span>Welcome to Zivo</span></div>
+  </div>
+</div>
 </section>
 
-    <section class="section" id="download">
-        <h2 style="margin-bottom: 10px;">Start Now</h2>
-        <p style="color:var(--primary); font-weight: 600; margin-bottom: 30px;">Safe • Secure • Trusted Platform</p>
-<button class="btn" style="padding: 20px 60px;">
-    Get ZivoApp (Coming Soon on Google Play)
-</button>
-    </section>
+<section class="section" id="business">
+<div class="container">
+  <div class="section-head reveal">
+    <div class="kicker">Company Information</div>
+    <h2>About ZivoApp.</h2>
+    <p>Clear information about the platform, its purpose and business details.</p>
+  </div>
 
-  <footer>
-    <div class="logo" style="font-size: 20px; margin-bottom: 20px;">ZIVO</div>
+  <div class="business-grid">
+    <div class="business-card reveal">
+      <div class="badge">Official Business Information</div>
+      <h3>ZivoApp</h3>
+      <p>
+        ZivoApp is a social networking and entertainment platform that enables users
+        to connect through online social features and real-time audio and video communication.
+      </p>
 
-<p style="color:#00ffc3; font-weight:700;">
-    Business Name: ZivoApp
-</p>
-    <p>© 2026 ZivoApp. All rights reserved.</p>
- <p>Owned by: CHANDRAKALA ANGOTH</p>
-<p>Operated by: BHUKYA PAVANKALYAN</p>
-    <p>Email: zivo.support@gmail.com</p>
-
-    <div style="margin-top: 25px; line-height: 2;">
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="/child-safety.html">Child Safety</a>|
-        <a href="delete-account.html">Delete Account</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="contact.html">Contact Us</a> |
-        <a href="refund.html">Refund Policy</a> |
-        <a href="shipping.html">Shipping & Delivery</a> |
-        <a href="checkout.html">Checkout Page</a> |
-        <a href="about.html">About</a>
+      <div class="owner">
+        <div class="owner-row"><span>Legal Business Owner</span><span>CHANDRAKALA ANGOTH</span></div>
+        <div class="owner-row"><span>Business Name</span><span>ZivoApp</span></div>
+        <div class="owner-row"><span>Operated & Managed by</span><span>BHUKYA PAVANKALYAN</span></div>
+        <div class="owner-row"><span>Service Availability</span><span>Worldwide 🌍</span></div>
+        <div class="owner-row"><span>Website</span><span>www.zivoapp.in</span></div>
+        <div class="owner-row"><span>Support</span><span>zivo.support@gmail.com</span></div>
+      </div>
     </div>
+
+    <div class="glass reveal">
+      <div class="info">
+        <h3>📌 Platform Purpose</h3>
+        <p>
+          Zivo focuses on digital communication and user engagement. It is designed
+          for online social interaction through profiles, posts, Moments, audio calls,
+          video calls and other supported in-app features.
+        </p>
+        <div class="list">
+          <div><span>Service type</span><span>Digital social networking platform</span></div>
+          <div><span>Communication</span><span>Audio + Video</span></div>
+          <div><span>Social content</span><span>Posts + Moments</span></div>
+          <div><span>Availability</span><span>Worldwide, subject to requirements</span></div>
+          <div><span>Offline services</span><span>Not provided</span></div>
+          <div><span>Payments</span><span>Virtual coins / supported in-app features</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="safety">
+<div class="container">
+  <div class="section-head reveal">
+    <div class="kicker">Safety & Responsible Use</div>
+    <h2>Use Zivo responsibly.</h2>
+    <p>ZivoApp is intended for responsible online communication and social interaction.</p>
+  </div>
+
+  <div class="safety">
+    <div class="safety-item reveal"><div class="big">🔐</div><h3>Privacy</h3><p>Users should review the Privacy Policy and avoid sharing sensitive personal information with people they do not know.</p></div>
+    <div class="safety-item reveal"><div class="big">🛡️</div><h3>Responsible Communication</h3><p>Users are expected to follow applicable laws, community rules and ZivoApp policies when using the platform.</p></div>
+    <div class="safety-item reveal"><div class="big">🚫</div><h3>No Offline Arrangements</h3><p>ZivoApp is a digital communication platform and does not provide or arrange physical meetings or offline services.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="glass delete reveal">
+    <div class="section-head">
+      <div class="kicker">Account Control</div>
+      <h2>Account Deletion</h2>
+      <p>Users can request deletion of their account and personal data.</p>
+    </div>
+    <p style="color:#bdbccc;font-size:13px">To request account deletion:</p>
+    <ol>
+      <li>Send an email to <b>zivo.support@gmail.com</b>.</li>
+      <li>Use your registered phone number.</li>
+      <li>Mention “Delete my account”.</li>
+    </ol>
+    <p style="margin-top:15px;color:#bdbccc;font-size:13px">Your account and associated data will be deleted within 7 days of the request.</p>
+    <div class="notice">
+      Data deleted includes profile information, call history and app usage data.
+      Some data may be retained if required for legal or security purposes.
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section cta" id="download">
+<div class="container">
+  <div class="cta-box reveal">
+    <div class="kicker">ZivoApp</div>
+    <h2>Connect. Share. Communicate.</h2>
+    <p>
+      Discover people, share posts and Moments, and communicate through supported
+      real-time audio and video features.
+    </p>
+    <a class="btn" href="#">Get ZivoApp — Coming Soon on Google Play</a>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="font-size:22px">ZIVO</div>
+      <p>ZivoApp is a global digital social networking and communication platform for posts, Moments, real-time audio and video communication, and online social interaction.</p>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="/child-safety.html">Child Safety</a>
+      <a href="delete-account.html">Delete Account</a>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="shipping.html">Shipping & Delivery</a>
+      <a href="checkout.html">Checkout Page</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+  <div class="copy">
+    <span>© 2026 ZivoApp. All rights reserved.</span>
+    <span>Owned by CHANDRAKALA ANGOTH • Operated by BHUKYA PAVANKALYAN • zivo.support@gmail.com</span>
+  </div>
+</div>
 </footer>
 
-    <script>
-        // Dynamic 5D Bubble Generation
-        const container = document.getElementById('bubbleContainer');
-        function createBubble() {
-            const bubble = document.createElement('span');
-            const size = Math.random() * 60 + 10 + 'px';
-            bubble.style.width = size;
-            bubble.style.height = size;
-            bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.animationDuration = Math.random() * 10 + 8 + 's';
-            bubble.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(bubble);
-            
-            setTimeout(() => { bubble.remove(); }, 15000);
-        }
-        setInterval(createBubble, 1500);
+<script>
+const header=document.getElementById("header");
+window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>30),{passive:true});
 
-        // Smooth Scroll for Button
-        document.querySelector('a[href^="#"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    </script>
+const particleLayer=document.getElementById("particles");
+function particle(){
+  const p=document.createElement("i");
+  p.className="particle";
+  const s=Math.random()*6+2;
+  p.style.width=s+"px";p.style.height=s+"px";
+  p.style.left=Math.random()*100+"%";
+  p.style.bottom=(-10-Math.random()*20)+"vh";
+  p.style.animationDuration=(10+Math.random()*15)+"s";
+  p.style.animationDelay=(Math.random()*4)+"s";
+  p.style.setProperty("--x",(Math.random()*180-90)+"px");
+  particleLayer.appendChild(p);
+  setTimeout(()=>p.remove(),27000);
+}
+for(let i=0;i<28;i++)setTimeout(particle,i*180);
+setInterval(particle,700);
+
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add("show");revealObserver.unobserve(e.target)}
+  });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener("click",e=>{
+    const id=a.getAttribute("href");
+    if(id && id!=="#"){
+      const target=document.querySelector(id);
+      if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"})}
+    }
+  });
+});
+
+document.querySelectorAll("img").forEach(img=>{
+  img.addEventListener("error",()=>{
+    img.style.background="linear-gradient(135deg,#170c1b,#100d25,#06202a)";
+    img.style.objectFit="contain";
+    img.style.padding="30px";
+  });
+});
+</script>
 </body>
 </html>
